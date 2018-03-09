@@ -1,0 +1,25 @@
+.landingImg {
+  height: 50vh;
+  display: inline-block;
+}
+
+.landing {
+	height: 100vh;
+	width: 100vw;
+	background-color: #EC4068;
+	background: -webkit-linear-gradient(top left, #F45F55, #EC4068, #AE2E7A);
+	background: -o-linear-gradient(top left, #F45F55, #EC4068, #AE2E7A);
+	background: linear-gradient(to bottom right, #F45F55, #EC4068, #AE2E7A);
+
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
