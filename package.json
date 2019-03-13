@@ -1,25 +1,25 @@
 {
-  "name": "mern",
-  "version": "1.0.0",
-  "description": "Mern Demo",
-  "main": "server.js",
-  "scripts": {
-    "server": "node server.js",
-    "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
-    "build": "node scripts/build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
-  },
+  "name": "makeum-3",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.15.4",
-    "flexbox-react": "^4.4.0",
-    "react-router-dom": "^4.2.2",
-    "superagent": "^3.8.2"
-  }
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "2.1.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
