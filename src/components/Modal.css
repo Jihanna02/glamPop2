@@ -24,8 +24,11 @@
   justify-content: center;
 
   background-color: white;
-  width: 75%;
   padding: 30px;
+}
+
+.registration-page form {
+  margin: 0;
 }
 
 input.register-form {
