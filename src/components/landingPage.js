@@ -71,8 +71,8 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <section className="landing">
-          <Flexbox flexDirection="column" className="container">
+      <section className="container">
+          <Flexbox flexDirection="column" className="landing">
 
             <img src={header} alt="Logo Image" className="landingImg" />
             <h1><span className="logo">FleekShow</span></h1>
