@@ -81,7 +81,7 @@ class LandingPage extends Component {
             <form onSubmit={this.handleSubmit}>
               <input type="text" name="username" placeholder="Username" onChange={(e) => this.handleChange(e)} />
               <input type="password" name="password" placeholder="Password" onChange={(e) => this.handleChange(e)} />
-              <Link to='/looks'><input type="submit" value="Submit" /></Link>
+              <input type="submit" value="Submit" />
             </form>
 
             <h4>Not a member?<a id="register-btn" onClick={() => {

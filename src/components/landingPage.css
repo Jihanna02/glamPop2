@@ -1,6 +1,7 @@
 .landingImg {
   width: 25vw;
-  margin-top: 20px;
+  flex: none;
+  align-self: center;
 
 }
 
@@ -12,27 +13,39 @@
 	background: -o-linear-gradient(top left, #F45F55, #EC4068, #AE2E7A);
 	background: linear-gradient(to bottom right, #F45F55, #EC4068, #AE2E7A);
 
-}
-
-.container {
-
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.container{
+
+}
+
+h1, h2, h3, h4 {
+
+  flex: none;
+  align-self: center;
 }
 
 form {
   margin-top: 20px;
   margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 select, input, button {
-    border-width: 0px;
-    background-color: #FFFFFF;
+  border-width: 0px;
+  background-color: #FFFFFF;
 	box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    margin: 2px;
-    padding: 3px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  
+  width: 30vw;
+  margin: 2px;
+  padding: 3px;
 }
