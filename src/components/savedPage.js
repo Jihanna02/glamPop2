@@ -11,22 +11,26 @@ import look from './images/look.jpg';
 
 import Gallery from './gallery.js';
 
-class savedBar extends Component {
+class savedPage extends Component {
   render() {
     return (
       <section>
-        <NavBar />
-        <h2 class="component-heading">My Vanity Images</h2>
-        <FilterBar />
-      	<Flexbox className="vanityBar">
-          <Flexbox className="api-container">
-              <Gallery />
-          </Flexbox>
+      	<Flexbox className="looks-page">
+
+          <NavBar />
+
+          <h2 class="component-heading">My Saved Looks</h2>
+
+          <FilterBar />
+
+          <Gallery />
+
+          <FooterBar />
+          
       	</Flexbox>
-        <FooterBar />
       </section>
     );
   }
 }
 
-export default savedBar;
+export default savedPage;

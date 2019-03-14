@@ -16,8 +16,6 @@ class NavBar extends Component {
               <li className="navLinks nav-right"><Link to='/'>Logout</Link></li>
               <li className="navLinks nav-right"><Link to='/saved'>Saved Looks</Link></li>
               <li className="navLinks nav-right"><Link to='/looks'>Daily Looks</Link></li>
-
-
             </ul>
       </nav>
 

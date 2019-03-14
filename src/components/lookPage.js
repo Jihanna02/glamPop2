@@ -7,7 +7,7 @@ import NavBar from './navBar.js';
 import FilterBar from './filterBar.js';
 import FooterBar from './footerBar.js';
 
-import Api from './Api.js';
+import Api from './api.js';
 // import Gallery from './Gallery.js';
 
 class lookBar extends Component {
@@ -19,7 +19,6 @@ class lookBar extends Component {
             <h2 class="component-heading" >Browse our latest looks!</h2>
             <Api />    
             <FooterBar />
-
         </Flexbox>
     );
   }

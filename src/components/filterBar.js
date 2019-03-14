@@ -11,11 +11,11 @@ class FilterBar extends Component {
 
       <div className="FilterBar">
           <select name="filter">
-            <option value="day-looks"><Link to='/looks'>All Looks</Link></option>
-            <option value="day-looks"><Link to='/looks/day-looks'>Day Looks</Link></option>
-            <option value="night-looks"><Link to='/looks/night-looks'>Night Looks</Link></option>
-            <option value="creative-looks"><Link to='/looks/creative-looks'>Creative Looks</Link></option>
-            <option value="cultural-looks"><Link to='/looks/cultural-looks'>Cultural Looks</Link></option>
+            <option value="day-looks">All Looks</option>
+            <option value="day-looks">Day Looks</option>
+            <option value="night-looks">Night Looks</option>
+            <option value="creative-looks">Creative Looks</option>
+            <option value="cultural-looks">Cultural Looks</option>
           </select>
       </div>
 

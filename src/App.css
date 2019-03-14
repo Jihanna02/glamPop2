@@ -64,18 +64,6 @@ top: 50%;
   opacity: 0;
 }
 
-div.masonryDB { 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-
-div.masonryApi:hover .img-look { opacity: 1; }
-div.masonryApi:hover .img-look:hover { opacity: 0.5; } 
-div.masonryDB:hover .img-look { opacity: 1; }
-div.masonryDB:hover .img-look:hover { opacity: 0.5; } 
-
 .img-card:hover  > .img-icon { opacity: 1 ; } 
 
 /* fallback for earlier versions of Firefox */
@@ -113,9 +101,9 @@ select {
 /*nav-bar*/
 .navBar{
   background-color: #EFFAEE;
-/*  order: 2;*/
+  width: 100vw;
   height: 120px;
-display: block;
+  display: block;
 }
 
 .navBar h1 {
@@ -189,6 +177,8 @@ li.navLinks.nav-right {
 .looks-page{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .masonryApi { 
@@ -209,29 +199,13 @@ li.navLinks.nav-right {
 
 } 
 
-.vanityBar{
-  background-color: #EC4068;
-  background: -webkit-linear-gradient(top, #F45F55, #EC4068, #AE2E7A);
-  background: -o-linear-gradient(top, #F45F55, #EC4068, #AE2E7A);
-  background: linear-gradient(to bottom, #F45F55, #EC4068, #AE2E7A);
+div.masonryApi:hover .img-look { opacity: 1; }
+div.masonryApi:hover .img-look:hover { opacity: 0.5; } 
 
-  order: 5;
-
-  align-items: center;
-
-/*  padding: 10px;*/
-  margin-bottom: 50px;
-}
 
 .look-card{
   padding: 75px 30px;
 }
-
-/*.looks-bar-btn{
-  padding: 15px;
-  display: block;
-  margin: 0 auto;
-}*/
 
 .quoteBar {
 
