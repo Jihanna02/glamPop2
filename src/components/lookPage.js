@@ -14,18 +14,13 @@ class lookBar extends Component {
 
   render() {
     return (
-        <section >
+        <Flexbox className="looks-page">
             <NavBar />
             <h2 class="component-heading" >Browse our latest looks!</h2>
-            <Flexbox className="looks-bar">
-                <Flexbox className="api-container">
-                    <Api />
-                </Flexbox>
-            </Flexbox>
-                
+            <Api />    
             <FooterBar />
 
-        </section>
+        </Flexbox>
     );
   }
 }
