@@ -4,7 +4,7 @@ class footerBar extends Component {
   render() {
     return (
     	<div className="footerBar">
-    		<p>Copyright © FleekLab 2019</p>
+    		<p>Copyright © FleekShow 2019</p>
     	</div>
     );
   }

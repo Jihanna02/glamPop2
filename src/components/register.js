@@ -36,7 +36,7 @@ class Register extends React.Component {
   render() {
     return (
     	<Flexbox className="registration-page">
-			<h1>Create your Makeum account</h1>
+			<h1>Create your FleekLab account</h1>
       		<form onSubmit={this.handleSubmit}>
 
 			  <input className="register-form" type="text" name="first_name"  placeholder="First Name"  onChange={(e) => this.handleChange(e)} required />

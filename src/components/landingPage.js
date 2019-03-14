@@ -75,7 +75,7 @@ class LandingPage extends Component {
           <Flexbox flexDirection="column" className="container">
 
             <img src={header} alt="Logo Image" className="landingImg" />
-            <h1><span className="logo">FleekLab</span></h1>
+            <h1><span className="logo">FleekShow</span></h1>
             <h2>Your one-stop shop for today's hottest looks.</h2>
 
             <form onSubmit={this.handleSubmit}>

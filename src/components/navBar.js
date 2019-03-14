@@ -10,18 +10,15 @@ class NavBar extends Component {
     return (
 
       <nav className="navBar">
-          <ul>
-            <li className="navLinks"><Link to='/about'>About Us</Link></li>
-            <li className="navLinks"><Link to='/looks'>Daily Looks</Link></li>
-            <li className="navLinks"><Link to='/vanity'>Your Vanity</Link></li>
-            <li className="navLinks"><Link to='/'>Logout</Link></li>
-            
-          </ul>
+            <ul>
+              <li className="navLinks"><Link to='/looks'><img src={header} alt="header" className="headerImg" /></Link></li>
+              <li className="navLinks"><Link to='/looks'><span className="logo">FleekShow</span></Link></li>
+              <li className="navLinks nav-right"><Link to='/'>Logout</Link></li>
+              <li className="navLinks nav-right"><Link to='/saved'>Saved Looks</Link></li>
+              <li className="navLinks nav-right"><Link to='/looks'>Daily Looks</Link></li>
 
-          <div className="">
-            <img src={header} alt="header" className="headerImg" />
-            <h1 className="center"><span className="logo">GlamPop!</span></h1>
-          </div>
+
+            </ul>
       </nav>
 
     );
