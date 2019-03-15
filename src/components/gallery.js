@@ -8,7 +8,7 @@ import Delete from './images/icon-delete.svg';
 // const userID = window.sessionStorage.getItem(userID);
 // console.log(userID);
 
-class Api extends Component {
+class Gallery extends Component {
   state = {
     pics: [],
     pixObj:[],
@@ -80,4 +80,4 @@ class Api extends Component {
 
 }
 
-export default Api;
+export default Gallery;

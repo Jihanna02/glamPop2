@@ -8,7 +8,6 @@ import FilterBar from './filterBar.js';
 import FooterBar from './footerBar.js';
 
 import Api from './api.js';
-// import Gallery from './Gallery.js';
 
 class lookBar extends Component {
 
