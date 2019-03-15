@@ -9,7 +9,6 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
     "superagent": "^4.1.0",
-    "npm": "6.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,11 +19,11 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-
-  "engines" : {
-
-    "node":"10.15.3"
-
+  "engines": {
+    "node": ">=10.15.3"
+  },
+  "dependencies": {
+    "npm": "^6.4.1"
   },
   "browserslist": [
     ">0.2%",
@@ -33,3 +32,5 @@
     "not op_mini all"
   ]
 }
+
+
