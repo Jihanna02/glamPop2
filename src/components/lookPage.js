@@ -9,7 +9,7 @@ import edit from './images/icon-edit.svg';
 import iconDelete from './images/icon-delete.svg';
 import look from './images/look.jpg';
 
-import Gallery from './gallery.js';
+import DailyGallery from './dailyGallery.js';
 
 class lookPage extends Component {
   render() {
@@ -19,11 +19,11 @@ class lookPage extends Component {
 
           <NavBar />
 
-          <h2 class="component-heading">My Saved Looks</h2>
+          <h2 className="component-heading">My Saved Looks</h2>
 
           <FilterBar />
 
-          <Gallery />
+          <DailyGallery />
 
           <FooterBar />
           

@@ -19,7 +19,7 @@ class savedPage extends Component {
 
           <NavBar />
 
-          <h2 class="component-heading">My Saved Looks</h2>
+          <h2 className="component-heading">My Saved Looks</h2>
 
           <FilterBar />
 

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
 import request from 'superagent';
 
-import Delete from './images/icon-delete.svg';
+import Heart from './images/icon-heart.svg';
 
 // const userID = window.sessionStorage.getItem(userID);
 // console.log(userID);
 
-class Gallery extends Component {
+class DailyGallery extends Component {
   state = {
     pics: [],
     pixObj:[],
@@ -63,7 +63,7 @@ class Gallery extends Component {
       pix = this.state.pixObj.map((obj,i) => {
               return <div className="img-card">
               <img key={i} src={obj.urls.regular} alt='culture pic' className="img-look" />
-              <img src={Delete} alt="like" className="img-icon" />
+              <img src={Heart} alt="like" className="img-icon" />
               </div>
             })
     }
@@ -74,4 +74,4 @@ class Gallery extends Component {
 
 }
 
-export default Gallery;
+export default DailyGallery;

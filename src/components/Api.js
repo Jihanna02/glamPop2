@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Fetch } from 'react-request';
 import Flexbox from 'flexbox-react';
 import request from 'superagent';
 
@@ -28,8 +27,6 @@ class Api extends Component {
    //      alert("success!");
    //    }
    //  });
-
-   console.log(this);
   }
 
   componentDidMount() {
