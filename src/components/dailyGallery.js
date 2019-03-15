@@ -38,17 +38,15 @@ class DailyGallery extends Component {
     request
       .get(`https://api.unsplash.com//users/jihanna02/collections?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
       .then( res => {
-        console.log(res);
         res.body.map(obj => {
           request
 
             .get(`https://api.unsplash.com/collections/${obj.id}/photos?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
             .then( res => {
-              console.log(res);
               const apiObject = res.body;
-              console.log(apiObject); 
+
               this.setState({pixObj:[...this.state.pixObj, ...apiObject]})
-              console.log(this.state)
+
           });
         })
 
