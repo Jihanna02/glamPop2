@@ -1,24 +1,36 @@
 import React, { Component } from 'react';
-// import { Fetch } from 'react-request';
 import Flexbox from 'flexbox-react';
-
 
 import NavBar from './navBar.js';
 import FilterBar from './filterBar.js';
 import FooterBar from './footerBar.js';
 
+import edit from './images/icon-edit.svg';
+import iconDelete from './images/icon-delete.svg';
+import look from './images/look.jpg';
 
-class lookPage extends Component {
+import Api from './api.js';
 
+class savedPage extends Component {
   render() {
     return (
+      <section>
         <Flexbox className="looks-page">
-            <NavBar />
-            <h2 class="component-heading" >Browse our latest looks!</h2> 
-            <FooterBar />
+
+          <NavBar />
+
+          <h2 class="component-heading">My Saved Looks</h2>
+
+          <FilterBar />
+
+          <Api />
+
+          <FooterBar />
+          
         </Flexbox>
+      </section>
     );
   }
 }
 
-export default lookPage;
+export default savedPage;
