@@ -7,9 +7,8 @@ import NavBar from './navBar.js';
 import FilterBar from './filterBar.js';
 import FooterBar from './footerBar.js';
 
-import Api from './api.js';
 
-class lookBar extends Component {
+class lookPage extends Component {
 
   render() {
     return (
@@ -22,4 +21,4 @@ class lookBar extends Component {
   }
 }
 
-export default lookBar;
+export default lookPage;

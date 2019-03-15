@@ -9,10 +9,9 @@ import './App.css';
 
 import LandingPage from './components/landingPage.js';
 import NavBar from './components/navBar.js';
-import LookBar from './components/lookPage.js';
+import LookPage from './components/lookPage.js';
 import SavedPage from './components/savedPage.js';
 import FooterBar from './components/footerBar.js';
-import Test from './components/test.js';
 
 class App extends Component {
 
@@ -26,9 +25,8 @@ class App extends Component {
 
             <Switch>
               <Route exact path='/' component={LandingPage}/>
-              <Route path='/looks' component={LookBar}/>
-              <Route path='/saved' component={SavedPage}/>  
-              <Route path='/test' component={Test}/>             
+              <Route path='/looks' component={LookPage}/>
+              <Route path='/saved' component={SavedPage}/>             
 
             </Switch>
 
