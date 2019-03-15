@@ -59,9 +59,6 @@ class Api extends Component {
         
       });
 }
-    //whateverObj
-
-    
 
   render() {
     let pix;

@@ -15,8 +15,7 @@ class lookBar extends Component {
     return (
         <Flexbox className="looks-page">
             <NavBar />
-            <h2 class="component-heading" >Browse our latest looks!</h2>
-            <Api />    
+            <h2 class="component-heading" >Browse our latest looks!</h2> 
             <FooterBar />
         </Flexbox>
     );
