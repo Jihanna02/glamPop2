@@ -19,9 +19,7 @@ class lookPage extends Component {
 
           <NavBar />
 
-          <h2 className="component-heading">My Saved Looks</h2>
-
-          <FilterBar />
+          <h2 className="component-heading">Browse our daily looks!</h2>
 
           <DailyGallery />
 
