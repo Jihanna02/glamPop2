@@ -1,7 +1,11 @@
 {
-  "name": "makeum",
+  "name": "fleekshow",
   "version": "0.1.0",
   "private": true,
+    "version": "1.0.0",
+  "engines": {
+    "node": "10.15.3"
+  },
   "dependencies": {
     "flexbox-react": "^4.4.0",
     "react": "^16.8.4",
