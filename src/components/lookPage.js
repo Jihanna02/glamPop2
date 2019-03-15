@@ -9,9 +9,9 @@ import edit from './images/icon-edit.svg';
 import iconDelete from './images/icon-delete.svg';
 import look from './images/look.jpg';
 
-import Api from './api.js';
+import Gallery from './gallery.js';
 
-class savedPage extends Component {
+class lookPage extends Component {
   render() {
     return (
       <section>
@@ -23,7 +23,7 @@ class savedPage extends Component {
 
           <FilterBar />
 
-          <Api />
+          <Gallery />
 
           <FooterBar />
           
@@ -33,4 +33,4 @@ class savedPage extends Component {
   }
 }
 
-export default savedPage;
+export default lookPage;
