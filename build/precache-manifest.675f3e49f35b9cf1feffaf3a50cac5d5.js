@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/static/media/look.06cef41a.jpg"
   },
   {
-    "revision": "793dc9f2f139f0accd33a80656151b17",
+    "revision": "e52ac9896c1f32e1797a9eb5c60e045b",
     "url": "/index.html"
   }
 ];
