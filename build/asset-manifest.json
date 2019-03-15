@@ -1,0 +1,19 @@
+{
+  "main.css": "/static/css/main.44f5b458.chunk.css",
+  "main.js": "/static/js/main.1d00eb79.chunk.js",
+  "main.js.map": "/static/js/main.1d00eb79.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/js/2.6a55a720.chunk.js": "/static/js/2.6a55a720.chunk.js",
+  "static/js/2.6a55a720.chunk.js.map": "/static/js/2.6a55a720.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.bc0c760502516e67c26e6cb0a1282318.js": "/precache-manifest.bc0c760502516e67c26e6cb0a1282318.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/main.44f5b458.chunk.css.map": "/static/css/main.44f5b458.chunk.css.map",
+  "static/media/App.css": "/static/media/bg01.891389e4.jpg",
+  "static/media/header.png": "/static/media/header.ffc7bf65.png",
+  "static/media/icon-delete.svg": "/static/media/icon-delete.e204e045.svg",
+  "static/media/icon-edit.svg": "/static/media/icon-edit.2216bcf8.svg",
+  "static/media/icon-heart.svg": "/static/media/icon-heart.ab11192f.svg",
+  "static/media/look.jpg": "/static/media/look.06cef41a.jpg"
+}
