@@ -6,6 +6,8 @@ body {
   color: #1D142E;
   margin: 0;
   background-color: #ffffff;
+
+  overflow-x: hidden;
 }
 
 p {
@@ -101,9 +103,14 @@ select {
 /*nav-bar*/
 .navBar{
   background-color: #EFFAEE;
-  width: 100vw;
-  height: 120px;
+  width: 100%;
+  height: 100%;
   display: block;
+
+  position: sticky;
+  top:0;
+
+  z-index: 80;
 }
 
 .navBar h1 {
@@ -195,7 +202,6 @@ li.navLinks.nav-right {
   padding: 0px;
   height: 400vh;
   width: 120vw;
-  overflow-x: hidden !important;
 
 } 
 

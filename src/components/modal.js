@@ -9,7 +9,7 @@ export class Modal extends React.Component {
         const modalStyle = {
             display: `${x.showModal}`,  
             position: 'fixed', 
-            zIndex: '1',  
+            zIndex: '100',  
             paddingTop: '100px',  
             left: '0',
             top: '0',

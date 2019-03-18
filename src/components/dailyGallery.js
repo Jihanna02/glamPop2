@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
 import request from 'superagent';
 
+import Modal from './modal.js';
+import SaveImg from './saveImg.js';
+
 import Heart from './images/icon-heart.svg';
+
 
 // const userID = window.sessionStorage.getItem(userID);
 // console.log(userID);
@@ -11,8 +15,16 @@ class DailyGallery extends Component {
   state = {
     pics: [],
     pixObj:[],
-    saved:[]
+    saved:[],
+
+    showModal:'none',
+    content:''
   }
+
+  //modal info
+  _closeModal = () => {
+      this.setState({showModal:'none'})
+  }  
 
   saveImg = () => {
     this.setState({saved:[this.img]})
@@ -51,7 +63,7 @@ class DailyGallery extends Component {
         })
 
       }).then(() => {
-        
+
       });
 }
 
@@ -59,14 +71,29 @@ class DailyGallery extends Component {
     let pix;
     if(this.state.pixObj){
       pix = this.state.pixObj.map((obj,i) => {
-              return <div className="img-card">
-              <img key={i} src={obj.urls.regular} alt='culture pic' className="img-look" />
-              <img src={Heart} alt="like" className="img-icon" />
+        return <div className="img-card" onClick={() => {
+                
+                this.setState({showModal:'block',content:<SaveImg /> });
+
+                sessionStorage.setItem('selected-img-url', obj.urls.regular);
+
+                }}>
+                <img key={i} src={obj.urls.regular} alt='culture pic' className="img-look" />
+                <img src={Heart} alt="like" className="img-icon" />
               </div>
             })
     }
     return(
-        <div className="masonryApi">{pix}</div>
+        <div className="masonryApi">
+
+          {pix}
+
+          <Modal 
+            showModal={this.state.showModal} 
+            closeModal={this._closeModal} 
+            content={this.state.content}
+          />
+        </div>
       );
   }
 
