@@ -15,7 +15,6 @@ class DailyGallery extends Component {
   state = {
     pics: [],
     pixObj:[],
-    saved:[],
 
     showModal:'none',
     content:''
@@ -32,25 +31,20 @@ class DailyGallery extends Component {
     const creative = [];
     const cultural = [];
 
-    axios
-      .get(`https://api.unsplash.com//users/jihanna02/collections?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
-      .then( res => {
-        res.body.map(obj => {
-          axios
+    axios.get('https://api.unsplash.com/collections/1714447/photos?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9')
+    .then( res => {
+      
+      const apiObject = res.data;
+      this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
 
-            .get(`https://api.unsplash.com/collections/${obj.id}/photos?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
-            .then( res => {
-              const apiObject = res.body;
+      console.log(apiObject);
 
-              this.setState({pixObj:[...this.state.pixObj, ...apiObject]})
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-          });
-        })
-
-      }).then(() => {
-
-      });
-}
+  }
 
   render() {
     let pix;
