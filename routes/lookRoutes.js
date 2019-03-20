@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const db = require("../models");
-const { User, Category } = require("../models");
+const { User, Looks } = require("../models");
 
 // Matches with "/api/track/"
 //route for post new track to database and returns information
 router.post("/", function ( req, res ) {
-	Category.create(req.body)
+	Looks.create(req.body)
 		.then((dbUser) => {
 			res.json(dbUser);
 		})
@@ -17,7 +17,7 @@ router.post("/", function ( req, res ) {
 
 // Matches with "/api/users/", returns everything in the "users" collection
  router.get("/", function (req,res){
- 		Category.find()
+ 		Looks.find()
  			.then(response=>{
  				res.json(response)
  				console.log(response)
@@ -27,7 +27,7 @@ router.post("/", function ( req, res ) {
 
  // Matches with "/api/categories/id/id:", returns everything in the ID collection
  router.get("/id/:id", function (req,res){
- 		Category
+ 		Looks
  		.findById(req.params.id)
  		.then(response=>{
  			res.json(response)

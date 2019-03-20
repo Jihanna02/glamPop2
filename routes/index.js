@@ -1,11 +1,11 @@
 const path = require("path");
 const router = require("express").Router();
-const categoryRoutes = require( "./categoryRoutes" );
+const lookRoutes = require( "./lookRoutes" );
 const userRoutes = require( "./userRoutes" );
 
 // API Routes
 router.use( "/api/users", userRoutes );
-router.use( "/api/categories", categoryRoutes );
+router.use( "/api/looks", lookRoutes );
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {

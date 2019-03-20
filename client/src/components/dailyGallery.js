@@ -26,21 +26,6 @@ class DailyGallery extends Component {
       this.setState({showModal:'none'})
   }  
 
-  saveImg = () => {
-    this.setState({saved:[this.img]})
-
-   // request
-   //  .post('/api/users/likes/' + userID)
-   //  .send(this.state.saved) // sends a JSON post body
-   //  .end((err, res) => {
-   //    if(err){
-   //      alert("failed.")
-   //    } else if (res){
-   //      alert("success!");
-   //    }
-   //  });
-  }
-
   componentDidMount() {
     const day = [];
     const night = [];

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const db = require("../models");
-const { User, Category } = require("../models");
+const { User, Looks } = require("../models");
 
 
 // Matches with "/api/users/"
@@ -47,7 +47,7 @@ router.post("/", function ( req, res ) {
 
 	})
 
- router.get("/id/:id/category/", function (req,res){
+ router.get("/id/:id/looks/", function (req,res){
  		User
  		.findById(req.params.id)
  		.then(response=>{

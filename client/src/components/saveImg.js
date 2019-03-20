@@ -6,36 +6,44 @@ import '../css/Modal.css';
 
 class SaveImg extends React.Component {
   
-    state = {
-    	
-    };
+	constructor(props){
+		super(props);
+		this.state = {
+			imgURL: sessionStorage.getItem('selected-img-url')
+		};
+
+		this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+	}
 
   handleChange = (event) => {
-    const target = event.target.value;
+		const target = event.target.value;
 
     const {name,value} = event.target
-    this.setState({[name]:value});
+		this.setState({[name]:value});
+
+		console.table(this.state);
 
   }
 
   handleSubmit = (event) => {
-	 request
-	  .post('/api/users')
-	  .send(this.state) // sends a JSON post body
-	  .end((err, res) => {
-	    if(err){
-	    	alert("Account not created. Please try again.")
-	    } else if (res){
-	    	alert("Account created. Welcome to GlamPop!");
-	    }
-	  });
-	  
-    event.preventDefault();
+
+		event.preventDefault();
+	 	request
+			.post('/api/looks')
+			.send(this.state) // sends a JSON post body
+			.end((err, res) => {
+				if(err){
+					alert("Image not saved.")
+					console.log(err);
+				} else if (res){
+					alert("Image saved.");
+				}
+			});
+  
   }
 
   render() {
-
-  	let data = sessionStorage.getItem('selected-img-url');
 
     return (
     	<Flexbox className="registration-page">
@@ -44,9 +52,10 @@ class SaveImg extends React.Component {
 
       		<form onSubmit={this.handleSubmit}>
 
-      			<img src={data} className="img-look" />
-      			<select name="categories">
-			        <option value="day-looks">Day Looks</option>
+					<input type="image" src={this.state.imgURL} value={this.state.imgURL} name="img-url" className="img-look" onChange={this.handleChange}/>
+      			<select name="categories" onChange={this.handleChange}>
+							<option value="selected">Please select a category:</option>
+							<option value="day-looks">Day Looks</option>
 			        <option value="night-looks">Night Looks</option>
 			        <option value="creative-looks">Creative Looks</option>
 			        <option value="cultural-looks">Cultural Looks</option>

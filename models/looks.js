@@ -4,15 +4,15 @@ var Schema = mongoose.Schema;
 // Use native promises
 mongoose.Promise = global.Promise;
 
-var CategorySchema = new Schema({
+var LookSchema = new Schema({
 
-	userId: String,
+	imgURL: String,
 	categoryName: String,
 	created_at: Date
 });
 
 
-CategorySchema.pre('save', function(next){
+LookSchema.pre('save', function(next){
  now = new Date();
  this.updated_at = now;
  if ( !this.created_at ) {
@@ -21,7 +21,7 @@ CategorySchema.pre('save', function(next){
  next();
 });
 
-var Category = mongoose.model("Category", CategorySchema);
+var Looks = mongoose.model("Looks", LookSchema);
 
-module.exports = Category;
+module.exports = Looks;
 

@@ -24,7 +24,8 @@ class SaveImg extends React.Component {
 	  .send(this.state) // sends a JSON post body
 	  .end((err, res) => {
 	    if(err){
-	    	alert("Account not created. Please try again.")
+				alert("Account not created. Please try again.")
+				console.log(err);
 	    } else if (res){
 	    	alert("Account created. Welcome to GlamPop!");
 	    }

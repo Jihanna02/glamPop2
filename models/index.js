@@ -1,4 +1,4 @@
 module.exports = {
   User: require("./user"),
-  Category: require("./category")
+  Looks: require("./looks")
 };
