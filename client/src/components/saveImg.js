@@ -30,17 +30,20 @@ class SaveImg extends React.Component {
   handleSubmit = (event) => {
 
 		event.preventDefault();
-	 	axios
-			.post('/api/looks')
-			.send(this.state) // sends a JSON post body
-			.end((err, res) => {
-				if(err){
-					alert("Image not saved.")
-					console.log(err);
-				} else if (res){
-					alert("Image saved.");
-				}
-			});
+
+		axios.post('/api/looks', this.state)
+		.then( (res) => {
+			alert("Image saved.");
+			
+			// sessionStorage.setItem('selected-img-url', "");
+			// this.setState({imgURL:sessionStorage.getItem('selected-img-url')});
+			
+			//close modal
+
+		})
+		.catch((err) => {
+			alert("Image not saved. Please try again.");
+		});
   
   }
 
