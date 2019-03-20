@@ -45,39 +45,34 @@ class LandingPage extends Component {
 
       event.preventDefault();
 
-      axios
-      .get('/api/users/' + this.state.username.toUpperCase())
-      .end((err, res) => {
-        if(err){
+      axios.get(`/api/users/${this.state.username.toUpperCase()}`)
+      .then((res) => {
+        let userCheck = res.data.length > 0;
+
+              if (userCheck === true) {
+                let loggedIn = res.data[0].password.toUpperCase() === this.state.password.toUpperCase();
+  
+                if ( loggedIn === true ) { 
+                  sessionStorage.setItem("idNumber", res.data[0]._id);
+      
+                  let idNumber = sessionStorage.getItem("idNumber");
+  
+                  return this.props.history.push("/looks");
+  
+                 } else {
+  
+                  alert("wrong password");
+                 }
+  
+              } else {
+                alert("user not found");
+  
+              }
+            
+      })
+      .catch( (err) => {
           alert("username not found");
-
           console.log(err);
-
-        } else if (res){
-          let userCheck = res.body.length > 0;
-
-            if (userCheck === true) {
-              let loggedIn = res.body[0].password.toUpperCase() === this.state.password.toUpperCase();
-
-              if ( loggedIn === true ) { 
-                sessionStorage.setItem("idNumber", res.body[0]._id);
-    
-
-                let idNumber = sessionStorage.getItem("idNumber");
-
-                return this.props.history.push("/looks");
-
-               } else {
-
-                alert("wrong password");
-               }
-
-            } else {
-              alert("user not found");
-
-            }
-          
-        }
 
       });    
 

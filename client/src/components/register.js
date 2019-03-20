@@ -19,37 +19,18 @@ class Register extends React.Component {
 
   handleSubmit = (event) => {
 
-    let data = this.state;
-
-    axios.post('/api/users', {
-      data
-    })
-    .then(function (response) {
-      alert("Account created. Welcome to Fleekshow!");
-      console.log(response);
-    })
-    .catch(function (error) {
-      alert("Account not created. Please try again.");
-      console.log(error);
-    });
-
-
-    // axios
-    // .post('/api/users',{data}) // sends a JSON post body
-    // .then((err, res) => {
-    //   if(err){
-
-    //     alert("Account not created. Please try again.");
-    //     console.log(err);
-
-    //   } else if (res){
-
-    //     alert("Account created. Welcome to Fleekshow!");
-
-    //   }
-    // });
-    
     event.preventDefault();
+    
+    axios.post('/api/users', this.state)
+    .then((res) => {
+      alert("Account created. Welcome to Fleekshow!");
+
+    })
+    .catch((err) => {
+      alert("Account not created. Please try again.");
+      console.log(err);
+
+    });
 
   }
 
