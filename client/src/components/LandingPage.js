@@ -61,6 +61,7 @@ class LandingPage extends Component {
 
               if ( loggedIn === true ) { 
                 sessionStorage.setItem("idNumber", res.body[0]._id);
+    
 
                 let idNumber = sessionStorage.getItem("idNumber");
 

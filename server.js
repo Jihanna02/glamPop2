@@ -21,6 +21,13 @@ app.use(routes);
 
 //Set up default mongoose connection
 var mongoDB = 'mongodb://127.0.0.1/fleekshow';
+
+//Heroku, connect to mlabs
+if(process.env.MONGODB_URI){
+  mongoose.connect(process.env.MONGODB_URI);
+}
+
+//Local machine, connect to local db  
 mongoose.connect(mongoDB);
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
