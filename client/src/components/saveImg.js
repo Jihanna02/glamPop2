@@ -9,8 +9,8 @@ class SaveImg extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			imgURL: sessionStorage.getItem('selected-img-url'),
-			categoryName: ""
+			categoryName: "",
+			imgURL: this.props.imgURL
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -18,26 +18,29 @@ class SaveImg extends React.Component {
 	}
 
   handleChange = (event) => {
-		const target = event.target.value;
+		// const target = event.target.value;
+  //   const {name,value} = event.target
+	// 	this.setState({[name]:value}, () => {
+	// 		console.log(this.state);
+	// });
 
-    const {name,value} = event.target
-		this.setState({[name]:value});
+	this.setState({value: event.target.value}, function () {
+    console.log(this.state);
+	
+	});
 
-		console.table(this.state);
-
-  }
+}
 
   handleSubmit = (event) => {
 
 		event.preventDefault();
 
+		console.log(this.state);
+
 		axios.post('/api/looks', this.state)
 		.then( (res) => {
 			alert("Image saved.");
-			
-			// sessionStorage.setItem('selected-img-url', "");
-			// this.setState({imgURL:sessionStorage.getItem('selected-img-url')});
-			
+
 			//close modal
 
 		})
@@ -56,7 +59,7 @@ class SaveImg extends React.Component {
 
       		<form onSubmit={this.handleSubmit}>
 
-					<input type="image" src={this.state.imgURL} value={this.state.imgURL} name="img-url" className="img-look" onChange={this.handleChange}/>
+					<input name="imgURL" type="image" src={this.props.imgURL} value={this.props.imgURL} className="img-look" />
       			<select name="categoryName" onChange={this.handleChange}>
 							<option value="selected">Please select a category:</option>
 							<option value="day-looks">Day Looks</option>

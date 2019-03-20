@@ -11,11 +11,10 @@ import Delete from '../images/icon-delete.svg';
 // const userID = window.sessionStorage.getItem(userID);
 // console.log(userID);
 
-class DailyGallery extends Component {
+class Gallery extends Component {
   state = {
     pics: [],
     pixObj:[],
-    saved:[],
 
     showModal:'none',
     content:''
@@ -26,55 +25,44 @@ class DailyGallery extends Component {
       this.setState({showModal:'none'})
   }  
 
-  saveImg = () => {
-    this.setState({saved:[this.img]})
-
-   // axios
-   //  .post('/api/users/likes/' + userID)
-   //  .send(this.state.saved) // sends a JSON post body
-   //  .end((err, res) => {
-   //    if(err){
-   //      alert("failed.")
-   //    } else if (res){
-   //      alert("success!");
-   //    }
-   //  });
-  }
-
   componentDidMount() {
     const day = [];
     const night = [];
     const creative = [];
     const cultural = [];
 
-    axios
-      .get(`/api/looks`)
-      .then( res => {
+    axios.get(`/api/looks`)
+    .then( res => {
+      
+      const apiObject = res.data;
+      this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
 
-        const apiObject = res.body;
-        this.setState({pixObj:[...this.state.pixObj, ...apiObject]})
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-      }).then(() => {
-
-      });
 }
 
   render() {
     let pix;
     if(this.state.pixObj){
+
       pix = this.state.pixObj.map((obj,i) => {
+
+        console.log(obj);
+
         return <div className="img-card" onClick={() => {
                 
-                this.setState({showModal:'block',content:<EditImg /> });
-
-                sessionStorage.setItem('selected-img-url', obj.urls.regular);
-
+                this.setState({showModal:'block',content:<EditImg imgURL={obj.imgURL}/> });
                 }}>
-                <img key={i} src={obj.imgURL} alt={obj.categoryName} className="img-look" />
+                
+                <img key={i} src={obj.imgURL} alt='culture pic' className="img-look" />
                 <img src={Delete} alt="like" className="img-icon" />
               </div>
             })
     }
+
     return(
         <div className="masonryApi">
 
@@ -91,4 +79,4 @@ class DailyGallery extends Component {
 
 }
 
-export default DailyGallery;
+export default Gallery;

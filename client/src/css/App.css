@@ -196,12 +196,12 @@ li.navLinks.nav-right {
   background: linear-gradient(to bottom, #F45F55, #EC4068, #AE2E7A);
 
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
+  flex-flow: column wrap;
   padding: 0px;
-  /* height: 400vh; */
+  height: 100vh;
   width: 120vw;
+
+
 
 } 
 

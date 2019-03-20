@@ -31,13 +31,13 @@ class DailyGallery extends Component {
     const creative = [];
     const cultural = [];
 
-    axios.get('https://api.unsplash.com/collections/1714447/photos?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9')
+    const unsplashID = "?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9";
+
+    axios.get(`https://api.unsplash.com/collections/1714447/photos/${unsplashID}`)
     .then( res => {
       
       const apiObject = res.data;
       this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
-
-      console.log(apiObject);
 
     })
     .catch(function (error) {
@@ -52,11 +52,13 @@ class DailyGallery extends Component {
       pix = this.state.pixObj.map((obj,i) => {
         return <div className="img-card" onClick={() => {
                 
-                this.setState({showModal:'block',content:<SaveImg /> });
-
-                sessionStorage.setItem('selected-img-url', obj.urls.regular);
-
+                this.setState({
+                  showModal:'block',
+                  content:<SaveImg imgURL={obj.urls.regular}/>
+                });
+                
                 }}>
+                
                 <img key={i} src={obj.urls.regular} alt='culture pic' className="img-look" />
                 <img src={Heart} alt="like" className="img-icon" />
               </div>

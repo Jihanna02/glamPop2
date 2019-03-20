@@ -4,11 +4,17 @@ import axios from 'axios';
 
 import '../css/Modal.css';
 
-class SaveImg extends React.Component {
-  
-    state = {
-    	
-    };
+class EditImg extends React.Component {
+
+	constructor(props){
+		super(props);
+		this.state = {
+			categoryName: ""
+		};
+
+		this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+	}
 
   handleChange = (event) => {
     const target = event.target.value;
@@ -19,24 +25,24 @@ class SaveImg extends React.Component {
   }
 
   handleSubmit = (event) => {
-	 axios
-	  .post('/api/users')
-	  .send(this.state) // sends a JSON post body
-	  .end((err, res) => {
-	    if(err){
-				alert("Account not created. Please try again.")
-				console.log(err);
-	    } else if (res){
-	    	alert("Account created. Welcome to FleekShow!");
-	    }
-	  });
+	
+		event.preventDefault();
+
+	axios.post('/api/looks', this.state)
+	.then( (res) => {
+		alert("Image saved.");
+
+		//close modal
+
+	})
+	.catch((err) => {
+		alert("Image not saved. Please try again.");
+	});
 	  
-    event.preventDefault();
+
   }
 
   render() {
-
-  	let data = sessionStorage.getItem('selected-img-url');
 
     return (
     	<Flexbox className="registration-page">
@@ -45,9 +51,10 @@ class SaveImg extends React.Component {
 
       		<form onSubmit={this.handleSubmit}>
 
-      			<img src={data} className="img-look" />
-      			<select name="categories">
-			        <option value="day-looks">Day Looks</option>
+					<input type="image" src={this.props.imgURL} value={this.props.imgURL} name="img-url" className="img-look" onChange={this.handleChange}/>
+      			<select name="categoryName" onChange={this.handleChange}>
+							<option value="selected">Please select a category:</option>
+							<option value="day-looks">Day Looks</option>
 			        <option value="night-looks">Night Looks</option>
 			        <option value="creative-looks">Creative Looks</option>
 			        <option value="cultural-looks">Cultural Looks</option>
@@ -64,4 +71,4 @@ class SaveImg extends React.Component {
   }
 }
 
-export default SaveImg;
+export default EditImg;
