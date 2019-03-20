@@ -1,6 +1,6 @@
  import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
-import request from 'superagent';
+import axios from 'axios';
 
 import Modal from './modal.js';
 import EditImg from './editImg.js';
@@ -29,7 +29,7 @@ class DailyGallery extends Component {
   saveImg = () => {
     this.setState({saved:[this.img]})
 
-   // request
+   // axios
    //  .post('/api/users/likes/' + userID)
    //  .send(this.state.saved) // sends a JSON post body
    //  .end((err, res) => {
@@ -47,7 +47,7 @@ class DailyGallery extends Component {
     const creative = [];
     const cultural = [];
 
-    request
+    axios
       .get(`/api/looks`)
       .then( res => {
 

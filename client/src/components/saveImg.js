@@ -1,6 +1,6 @@
 import React from 'react';
 import Flexbox from 'flexbox-react';
-import request from 'superagent';
+import axios from 'axios';
 
 import '../css/Modal.css';
 
@@ -30,7 +30,7 @@ class SaveImg extends React.Component {
   handleSubmit = (event) => {
 
 		event.preventDefault();
-	 	request
+	 	axios
 			.post('/api/looks')
 			.send(this.state) // sends a JSON post body
 			.end((err, res) => {

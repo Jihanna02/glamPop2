@@ -7,7 +7,7 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
-import request from 'superagent';
+import axios from 'axios';
 import Flexbox from 'flexbox-react';
 
 //components
@@ -45,7 +45,7 @@ class LandingPage extends Component {
 
       event.preventDefault();
 
-      request
+      axios
       .get('/api/users/' + this.state.username.toUpperCase())
       .end((err, res) => {
         if(err){

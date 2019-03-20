@@ -1,6 +1,6 @@
 import React from 'react';
 import Flexbox from 'flexbox-react';
-import request from 'superagent';
+import axios from 'axios';
 
 import '../css/Modal.css';
 
@@ -19,7 +19,7 @@ class SaveImg extends React.Component {
   }
 
   handleSubmit = (event) => {
-	 request
+	 axios
 	  .post('/api/users')
 	  .send(this.state) // sends a JSON post body
 	  .end((err, res) => {
@@ -27,7 +27,7 @@ class SaveImg extends React.Component {
 				alert("Account not created. Please try again.")
 				console.log(err);
 	    } else if (res){
-	    	alert("Account created. Welcome to GlamPop!");
+	    	alert("Account created. Welcome to FleekShow!");
 	    }
 	  });
 	  

@@ -1,6 +1,6 @@
 import React from 'react';
 import Flexbox from 'flexbox-react';
-import request from 'superagent';
+import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import '../css/Modal.css';
@@ -19,21 +19,35 @@ class Register extends React.Component {
 
   handleSubmit = (event) => {
 
+    let data = this.state;
 
-   request
-    .post('/api/users')
-    .send(this.state) // sends a JSON post body
-    .end((err, res) => {
-      if(err){
-
-        alert("Account not created. Please try again.");
-
-      } else if (res){
-
-        alert("Account created. Welcome to Fleekshow!");
-
-      }
+    axios.post('/api/users', {
+      data
+    })
+    .then(function (response) {
+      alert("Account created. Welcome to Fleekshow!");
+      console.log(response);
+    })
+    .catch(function (error) {
+      alert("Account not created. Please try again.");
+      console.log(error);
     });
+
+
+    // axios
+    // .post('/api/users',{data}) // sends a JSON post body
+    // .then((err, res) => {
+    //   if(err){
+
+    //     alert("Account not created. Please try again.");
+    //     console.log(err);
+
+    //   } else if (res){
+
+    //     alert("Account created. Welcome to Fleekshow!");
+
+    //   }
+    // });
     
     event.preventDefault();
 

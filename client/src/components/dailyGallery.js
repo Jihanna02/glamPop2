@@ -1,6 +1,6 @@
  import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
-import request from 'superagent';
+import axios from 'axios';
 
 import Modal from './modal.js';
 import SaveImg from './saveImg.js';
@@ -32,11 +32,11 @@ class DailyGallery extends Component {
     const creative = [];
     const cultural = [];
 
-    request
+    axios
       .get(`https://api.unsplash.com//users/jihanna02/collections?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
       .then( res => {
         res.body.map(obj => {
-          request
+          axios
 
             .get(`https://api.unsplash.com/collections/${obj.id}/photos?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
             .then( res => {
