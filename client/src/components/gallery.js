@@ -48,19 +48,11 @@ class DailyGallery extends Component {
     const cultural = [];
 
     request
-      .get(`https://api.unsplash.com//users/jihanna02/collections?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
+      .get(`/api/looks`)
       .then( res => {
-        res.body.map(obj => {
-          request
 
-            .get(`https://api.unsplash.com/collections/${obj.id}/photos?client_id=89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9`)
-            .then( res => {
-              const apiObject = res.body;
-
-              this.setState({pixObj:[...this.state.pixObj, ...apiObject]})
-
-          });
-        })
+        const apiObject = res.body;
+        this.setState({pixObj:[...this.state.pixObj, ...apiObject]})
 
       }).then(() => {
 
@@ -78,7 +70,7 @@ class DailyGallery extends Component {
                 sessionStorage.setItem('selected-img-url', obj.urls.regular);
 
                 }}>
-                <img key={i} src={obj.urls.regular} alt='culture pic' className="img-look" />
+                <img key={i} src={obj.imgURL} alt={obj.categoryName} className="img-look" />
                 <img src={Delete} alt="like" className="img-icon" />
               </div>
             })

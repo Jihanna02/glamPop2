@@ -9,7 +9,8 @@ class SaveImg extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			imgURL: sessionStorage.getItem('selected-img-url')
+			imgURL: sessionStorage.getItem('selected-img-url'),
+			categoryName: ""
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -53,7 +54,7 @@ class SaveImg extends React.Component {
       		<form onSubmit={this.handleSubmit}>
 
 					<input type="image" src={this.state.imgURL} value={this.state.imgURL} name="img-url" className="img-look" onChange={this.handleChange}/>
-      			<select name="categories" onChange={this.handleChange}>
+      			<select name="categoryName" onChange={this.handleChange}>
 							<option value="selected">Please select a category:</option>
 							<option value="day-looks">Day Looks</option>
 			        <option value="night-looks">Night Looks</option>
