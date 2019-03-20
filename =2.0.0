@@ -1,4 +1,0 @@
-+ react-scripts@2.1.8
-added 1542 packages from 636 contributors and audited 38723 packages in 50.631s
-found 63 low severity vulnerabilities
-  run `npm audit fix` to fix them, or `npm audit` for details
