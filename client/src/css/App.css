@@ -52,7 +52,7 @@ div.img-card{
 }
 
 .img-look{
-  width: 30vw;
+  width: 24vw;
   margin: 0;
   padding:0;
 }
@@ -198,7 +198,7 @@ li.navLinks.nav-right {
   display: flex;
   flex-flow: column wrap;
   padding: 0px;
-  height: 100vh;
+  height: 200vh;
   width: 120vw;
 
 

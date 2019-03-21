@@ -10,7 +10,7 @@ class SaveImg extends React.Component {
 		super(props);
 		this.state = {
 			categoryName: "",
-			imgURL: this.props.imgURL
+			imgURL: ""
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -35,18 +35,20 @@ class SaveImg extends React.Component {
 
 		event.preventDefault();
 
+		this.setState({imgURL:this.props.imgURL});
+
 		console.log(this.state);
 
-		axios.post('/api/looks', this.state)
-		.then( (res) => {
-			alert("Image saved.");
+		// axios.post('/api/looks', this.state)
+		// .then( (res) => {
+		// 	alert("Image saved.");
 
-			//close modal
+		// 	//close modal
 
-		})
-		.catch((err) => {
-			alert("Image not saved. Please try again.");
-		});
+		// })
+		// .catch((err) => {
+		// 	alert("Image not saved. Please try again.");
+		// });
   
   }
 
