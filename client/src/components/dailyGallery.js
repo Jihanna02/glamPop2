@@ -42,8 +42,6 @@ class DailyGallery extends Component {
       const apiObject = json;
       this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
 
-      console.log(this.state);
-
     });
 
   }

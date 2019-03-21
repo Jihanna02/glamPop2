@@ -18,15 +18,10 @@ class SaveImg extends React.Component {
 	}
 
   handleChange = (event) => {
-		// const target = event.target.value;
-  //   const {name,value} = event.target
-	// 	this.setState({[name]:value}, () => {
-	// 		console.log(this.state);
-	// });
-
-	this.setState({value: event.target.value}, function () {
-    console.log(this.state);
-	
+		const target = event.target.value;
+    const {name,value} = event.target
+		this.setState({[name]:value}, () => {
+			console.log(this.state);
 	});
 
 }
@@ -35,20 +30,20 @@ class SaveImg extends React.Component {
 
 		event.preventDefault();
 
-		this.setState({imgURL:this.props.imgURL});
+		this.setState({imgURL:this.props.imgURL}, () => {
+			console.log(this.state);
+		});
 
-		console.log(this.state);
+		axios.post('/api/looks', this.state)
+		.then( (res) => {
+			alert("Image saved.");
 
-		// axios.post('/api/looks', this.state)
-		// .then( (res) => {
-		// 	alert("Image saved.");
+			//close modal
 
-		// 	//close modal
-
-		// })
-		// .catch((err) => {
-		// 	alert("Image not saved. Please try again.");
-		// });
+		})
+		.catch((err) => {
+			alert("Image not saved. Please try again.");
+		});
   
   }
 
