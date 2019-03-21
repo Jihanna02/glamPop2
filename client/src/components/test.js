@@ -1,80 +1,116 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
-import request from 'superagent';
 
-import '../css/Modal.css';
+import axios from 'axios';
+import Unsplash, { toJson } from "unsplash-js";
 
-class SaveImg extends React.Component {
-  
-	constructor(props){
-		super(props);
-		this.state = {
-			imgURL: sessionStorage.getItem('selected-img-url')
-		};
+import Modal from './modal.js';
+import SaveImg from './saveImg.js';
 
-		this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-	}
+import Heart from '../images/icon-heart.svg';
+import Delete from '../images/icon-delete.svg';
 
-  handleChange = (event) => {
-		const target = event.target.value;
 
-    const {name,value} = event.target
-		this.setState({[name]:value});
+// const userID = window.sessionStorage.getItem(userID);
+// console.log(userID);
 
+class Test extends Component {
+  state = {
+    pics: [],
+    pixObj:[],
+
+    showModal:'none',
+    content:''
   }
 
-  handleSubmit = (event) => {
+  //modal info
+  _closeModal = () => {
+      this.setState({showModal:'none'})
+  }  
 
-		event.preventDefault();
+  componentDidMount() {
 
-		console.log(this.state);
+		if(this.props.galleryType === "api"){
 
-	 	request
-	  .post('/api/users')
-	  .send(this.state) // sends a JSON post body
-	  .end((err, res) => {
-	    if(err){
-				alert("Image saved.");
-				console.log(this.state);
+			const Unsplash = require('unsplash-js').default;
+ 
+			const unsplash = new Unsplash({
+				applicationId: "89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9",
+				secret: "07f9578de6c18570497cac47d8fb2fc6c6559c8b34163720b059ac3ec7de4d6c"
+			});
+	
+			unsplash.collections.getCollectionPhotos(1714447, 1, 30, "popular")
+			.then(toJson)
+			.then(json => {
+				const apiObject = json;
+				this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
+	
+			});
+
+		} else if (this.props.galleryType === "database"){
+
+			axios.get(`/api/looks`)
+			.then( res => {
 				
-	    } else if (res){
-				alert("Image not saved.");
-				console.log(this.state);
-	    }
-	  });
-	  
+				const apiObject = res.data;
+				this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
+	
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		}
   }
 
   render() {
+    let pix;
+    if(this.state.pixObj){
+      pix = this.state.pixObj.map((obj,i) => {
 
-  	let imgUrl = sessionStorage.getItem('selected-img-url');
+				let imageURL = "";
+				let imageIcon = "";
 
-    return (
-    	<Flexbox className="registration-page">
-			<h1>Save this look?</h1>
+				if (this.props.galleryType === "api") {
+					imageURL = obj.urls.regular;
+					imageIcon = require('../images/icon-heart.svg');
 
+				} else if (this.props.galleryType === "database") {
+					imageURL = obj.imgURL;
+					imageIcon = require('../images/icon-delete.svg');
+				}
 
-      		<form onSubmit={this.handleSubmit}>
+				console.log(imageIcon);
 
-						<input type="image" src={this.state.imgURL} value={this.state.imgURL} name="img-url" className="img-look" onChange={this.handleChange}/>
-            
-      			<select name="categories" onChange={this.handleChange}>
-							<option value="selected">Please select a category:</option>
-							<option value="day-looks">Day Looks</option>
-			        <option value="night-looks">Night Looks</option>
-			        <option value="creative-looks">Creative Looks</option>
-			        <option value="cultural-looks">Cultural Looks</option>
-		         </select>
+        return <div  key={i} className="img-card" onClick={() => {
+                
+                this.setState({
+                  showModal:'block',
+                  content:<SaveImg imgURL={imageURL}/>
+                });
 
-				<input className="register-form" type="submit" value="save" />
+                }}>
+                
+                <img key={i} src={imageURL} alt='culture pic' className="img-look" /> 
+                <img src={imageIcon} alt="like" className="img-icon" />
 
-			 </form>
+              </div>
+            })
+		}
+		
+    return(
+        <div className="masonryApi">
 
-	    </Flexbox>
+          {pix}
 
-    );
+          <Modal 
+            showModal={this.state.showModal} 
+            closeModal={this._closeModal} 
+            content={this.state.content}
+          />
+        </div>
+      );
   }
+
 }
 
-export default SaveImg;
+export default Test;

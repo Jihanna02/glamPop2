@@ -1,36 +1,31 @@
-import React, { Component } from 'react';
+import React, * as react from 'react';
 import Flexbox from 'flexbox-react';
 
 import NavBar from './navBar.js';
 import FilterBar from './filterBar.js';
 import FooterBar from './footerBar.js';
 
-import edit from '../images/icon-edit.svg';
-import iconDelete from '../images/icon-delete.svg';
-import look from '../images/look.jpg';
-
 import Gallery from './gallery.js';
 
-class savedPage extends Component {
+class lookPage extends react.Component {
   render() {
     return (
       <section>
-      	<Flexbox className="looks-page">
+        <Flexbox className="looks-page">
 
           <NavBar />
 
-          <h2 className="component-heading">My Saved Looks</h2>
-
+          <h2 className="component-heading">Review your saved looks.</h2>
           <FilterBar />
 
-          <Gallery />
+          <Gallery galleryType="database" />
 
           <FooterBar />
           
-      	</Flexbox>
+        </Flexbox>
       </section>
     );
   }
 }
 
-export default savedPage;
+export default lookPage;
