@@ -20,9 +20,7 @@ class SaveImg extends React.Component {
   handleChange = (event) => {
 		const target = event.target.value;
     const {name,value} = event.target
-		this.setState({[name]:value}, () => {
-			console.log(this.state);
-	});
+		this.setState({[name]:value}, () => {});
 
 }
 
@@ -30,9 +28,7 @@ class SaveImg extends React.Component {
 
 		event.preventDefault();
 
-		this.setState({imgURL:this.props.imgURL}, () => {
-			console.log(this.state);
-		});
+		this.setState({imgURL:this.props.imgURL}, () => {});
 
 		axios.post('/api/looks', this.state)
 		.then( (res) => {
