@@ -5,7 +5,7 @@ import axios from 'axios';
 import Unsplash, { toJson } from "unsplash-js";
 
 import Modal from './modal.js';
-import SaveImg from './saveImg.js';
+import Test from './test.js';
 
 import Heart from '../images/icon-heart.svg';
 import Delete from '../images/icon-delete.svg';
@@ -68,24 +68,25 @@ class Gallery extends react.Component {
       pix = this.state.pixObj.map((obj,i) => {
 
 				let imageURL = "";
-				let imageIcon = "";
+        let imageIcon = "";
+        let imageAction = "";
 
 				if (this.props.galleryType === "api") {
 					imageURL = obj.urls.regular;
-					imageIcon = require('../images/icon-heart.svg');
+          imageIcon = require('../images/icon-heart.svg');
+          imageAction = "save";
 
 				} else if (this.props.galleryType === "database") {
 					imageURL = obj.imgURL;
-					imageIcon = require('../images/icon-delete.svg');
+          imageIcon = require('../images/icon-delete.svg');
+          imageAction = "edit";
 				}
-
-				console.log(imageIcon);
 
         return <div  key={i} className="img-card" onClick={() => {
                 
                 this.setState({
                   showModal:'block',
-                  content:<SaveImg imgURL={imageURL}/>
+                  content:<Test imgURL={imageURL} imageAction={imageAction}/>
                 });
 
                 }}>

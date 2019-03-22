@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
 }
 
+.hidden {
+  display: none;
+}
+
 p {
   font-family: "Martel Sans";
   color: #1D142E;

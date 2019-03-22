@@ -1,116 +1,103 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Flexbox from 'flexbox-react';
-
 import axios from 'axios';
-import Unsplash, { toJson } from "unsplash-js";
 
-import Modal from './modal.js';
-import SaveImg from './saveImg.js';
+import '../css/Modal.css';
 
-import Heart from '../images/icon-heart.svg';
-import Delete from '../images/icon-delete.svg';
+class Test extends React.Component {
+  
+	constructor(props){
+		super(props);
+		this.state = {
+			categoryName: "",
+			imgURL: ""
+		};
 
+		this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+	}
 
-// const userID = window.sessionStorage.getItem(userID);
-// console.log(userID);
+  handleChange = (event) => {
+		const target = event.target.value;
+    const {name,value} = event.target;
 
-class Test extends Component {
-  state = {
-    pics: [],
-    pixObj:[],
+    //find a better way to do this
+		this.setState({[name]:value}, () => {
+      this.setState({imgURL:this.props.imgURL}, () => {});
+    });
 
-    showModal:'none',
-    content:''
-  }
+}
 
-  //modal info
-  _closeModal = () => {
-      this.setState({showModal:'none'})
-  }  
+  handleSubmit = (event) => {
 
-  componentDidMount() {
+		event.preventDefault();
+    
+    if (this.props.imageAction === "save") {
+      axios.post('/api/looks', this.state)
+      .then( (res) => {
+        alert("Image saved.");
+        //close modal
+      })
+      .catch((err) => {
+        alert("Image not saved. Please try again.");
+      });
 
-		if(this.props.galleryType === "api"){
+    } else if (this.props.imageAction === "edit") {
 
-			const Unsplash = require('unsplash-js').default;
- 
-			const unsplash = new Unsplash({
-				applicationId: "89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9",
-				secret: "07f9578de6c18570497cac47d8fb2fc6c6559c8b34163720b059ac3ec7de4d6c"
-			});
-	
-			unsplash.collections.getCollectionPhotos(1714447, 1, 30, "popular")
-			.then(toJson)
-			.then(json => {
-				const apiObject = json;
-				this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
-	
-			});
+      console.log(this.props.imgURL);
 
-		} else if (this.props.galleryType === "database"){
-
-			axios.get(`/api/looks`)
-			.then( res => {
-				
-				const apiObject = res.data;
-				this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
-	
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-		}
+      axios.get(`/api/looks/imgURL/${this.props.imgURL}`)
+      .then( (res) => {
+        console.log(res.data);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    }
+  
   }
 
   render() {
-    let pix;
-    if(this.state.pixObj){
-      pix = this.state.pixObj.map((obj,i) => {
 
-				let imageURL = "";
-				let imageIcon = "";
+    let buttonClasses = "";
 
-				if (this.props.galleryType === "api") {
-					imageURL = obj.urls.regular;
-					imageIcon = require('../images/icon-heart.svg');
+    if (this.props.imageAction === "save") {
 
-				} else if (this.props.galleryType === "database") {
-					imageURL = obj.imgURL;
-					imageIcon = require('../images/icon-delete.svg');
-				}
+      buttonClasses = "hidden";
 
-				console.log(imageIcon);
+    } else if (this.props.imageAction === "edit") {
 
-        return <div  key={i} className="img-card" onClick={() => {
-                
-                this.setState({
-                  showModal:'block',
-                  content:<SaveImg imgURL={imageURL}/>
-                });
+      buttonClasses = "";
 
-                }}>
-                
-                <img key={i} src={imageURL} alt='culture pic' className="img-look" /> 
-                <img src={imageIcon} alt="like" className="img-icon" />
+    }
 
-              </div>
-            })
-		}
-		
-    return(
-        <div className="masonryApi">
+    return (
+    	<Flexbox className="registration-page">
+			<h1>{this.props.imageAction} this look?</h1>
 
-          {pix}
+      		<form onSubmit={this.handleSubmit}>
 
-          <Modal 
-            showModal={this.state.showModal} 
-            closeModal={this._closeModal} 
-            content={this.state.content}
-          />
-        </div>
-      );
+					<input name="imgURL" type="image" src={this.props.imgURL} value={this.props.imgURL} className="img-look" />
+      			<select name="categoryName" onChange={this.handleChange}>
+							<option value="">Please select a category:</option>
+							<option value="day-looks">Day Looks</option>
+			        <option value="night-looks">Night Looks</option>
+			        <option value="creative-looks">Creative Looks</option>
+			        <option value="cultural-looks">Cultural Looks</option>
+		         </select>
+
+				<input className="register-form" type="submit" value="save" />
+
+			 </form>
+
+       <button className={buttonClasses} onClick={() => {
+
+       }}>Delete</button>
+
+	    </Flexbox>
+
+    );
   }
-
 }
 
 export default Test;
