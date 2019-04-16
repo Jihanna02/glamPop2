@@ -1,12 +1,6 @@
 //npm-packages
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
-} from "react-router-dom";
+
 import axios from 'axios';
 import Flexbox from 'flexbox-react';
 
@@ -35,7 +29,7 @@ class LandingPage extends Component {
     }
 
     handleChange = (event) => {
-      const target = event.target.value;
+
       const {name,value} = event.target
       this.setState({[name]:value});
 
@@ -55,7 +49,7 @@ class LandingPage extends Component {
                 if ( loggedIn === true ) { 
                   sessionStorage.setItem("idNumber", res.data[0]._id);
       
-                  let idNumber = sessionStorage.getItem("idNumber");
+                  // let idNumber = sessionStorage.getItem("idNumber");
   
                   return this.props.history.push("/looks");
   
@@ -71,8 +65,10 @@ class LandingPage extends Component {
             
       })
       .catch( (err) => {
-          alert("username not found");
-          console.log(err);
+        console.log(err);
+
+        alert("username not found");
+
 
       });    
 
@@ -83,7 +79,7 @@ class LandingPage extends Component {
       <section className="container">
           <Flexbox flexDirection="column" className="landing">
 
-            <img src={header} alt="Logo Image" className="landingImg" />
+            <img src={header} alt="Logo" className="landingImg" />
             <h1><span className="logo">FleekShow</span></h1>
             <h2>Your one-stop shop for today's hottest looks.</h2>
 

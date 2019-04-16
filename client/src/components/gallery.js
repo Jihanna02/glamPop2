@@ -1,15 +1,10 @@
 import React, * as react from 'react';
-import Flexbox from 'flexbox-react';
 
 import axios from 'axios';
-import Unsplash, { toJson } from "unsplash-js";
+import { toJson } from "unsplash-js";
 
 import Modal from './modal.js';
-import Test from './test.js';
-
-import Heart from '../images/icon-heart.svg';
-import Delete from '../images/icon-delete.svg';
-
+import ImageTile from './imageTile.js';
 
 // const userID = window.sessionStorage.getItem(userID);
 // console.log(userID);
@@ -23,10 +18,9 @@ class Gallery extends react.Component {
     content:''
   }
 
-  //modal info
   _closeModal = () => {
-      this.setState({showModal:'none'})
-  }  
+    this.setState({showModal:'none'})
+  }
 
   componentDidMount() {
 
@@ -42,9 +36,16 @@ class Gallery extends react.Component {
 			unsplash.collections.getCollectionPhotos(1714447, 1, 30, "popular")
 			.then(toJson)
 			.then(json => {
-				const apiObject = json;
+        const apiObject = json;
+        
+        
+        // alt_description
+
+
 				this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
-	
+  
+
+
 			});
 
 		} else if (this.props.galleryType === "database"){
@@ -69,29 +70,33 @@ class Gallery extends react.Component {
 
 				let imageURL = "";
         let imageIcon = "";
+        let imageAltText = "";
         let imageAction = "";
 
 				if (this.props.galleryType === "api") {
-					imageURL = obj.urls.regular;
+          imageURL = obj.urls.regular;
+          imageAltText = obj.alt_description;
           imageIcon = require('../images/icon-heart.svg');
           imageAction = "save";
 
 				} else if (this.props.galleryType === "database") {
-					imageURL = obj.imgURL;
-          imageIcon = require('../images/icon-delete.svg');
+          imageURL = obj.imgURL;
+          imageAltText = obj.imgAlt;
+          imageIcon = require('../images/icon-edit.svg');
           imageAction = "edit";
+
 				}
 
         return <div  key={i} className="img-card" onClick={() => {
                 
                 this.setState({
                   showModal:'block',
-                  content:<Test imgURL={imageURL} imageAction={imageAction}/>
+                  content:<ImageTile imgURL={imageURL} imgAlt={imageAltText} imageAction={imageAction}/>
                 });
 
                 }}>
                 
-                <img key={i} src={imageURL} alt='culture pic' className="img-look" /> 
+                <img key={i} src={imageURL} alt={imageAltText} className="img-look" /> 
                 <img src={imageIcon} alt="like" className="img-icon" />
 
               </div>
@@ -99,6 +104,7 @@ class Gallery extends react.Component {
 		}
 		
     return(
+      
         <div className="masonryApi">
 
           {pix}
@@ -107,6 +113,7 @@ class Gallery extends react.Component {
             showModal={this.state.showModal} 
             closeModal={this._closeModal} 
             content={this.state.content}
+            autoClose={false}
           />
         </div>
       );

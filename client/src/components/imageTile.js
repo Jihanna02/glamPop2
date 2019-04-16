@@ -4,39 +4,43 @@ import axios from 'axios';
 
 import '../css/Modal.css';
 
-class Test extends React.Component {
+class ImageTile extends React.Component {
   
 	constructor(props){
 		super(props);
 		this.state = {
 			categoryName: "",
-			imgURL: ""
-		};
+      imgURL: "",
+      imgAlt: ""
+    };
 
 		this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
   handleChange = (event) => {
-		const target = event.target.value;
+
     const {name,value} = event.target;
 
-    //find a better way to do this
-		this.setState({[name]:value}, () => {
-      this.setState({imgURL:this.props.imgURL}, () => {});
+		this.setState({
+      
+      [name]:value}, () => {
+        this.setState({
+          imgURL:this.props.imgURL,
+          imgAlt: this.props.imgAlt}, () => {});
     });
 
-}
+  }
 
   handleSubmit = (event) => {
 
-		event.preventDefault();
+    event.preventDefault();
     
     if (this.props.imageAction === "save") {
       axios.post('/api/looks', this.state)
       .then( (res) => {
         alert("Image saved.");
-        //close modal
+
       })
       .catch((err) => {
         alert("Image not saved. Please try again.");
@@ -49,11 +53,18 @@ class Test extends React.Component {
       axios.get(`/api/looks/imgURL/${this.props.imgURL}`)
       .then( (res) => {
         console.log(res.data);
+
       })
       .catch(function (err) {
         console.log(err);
       });
     }
+
+    const resetForm = () => {
+      document.getElementById("save-edit-form").reset();
+    };
+
+    resetForm();
   
   }
 
@@ -71,13 +82,18 @@ class Test extends React.Component {
 
     }
 
+    const {	categoryName, imgURL } = this.state;
+    const isEnabled = categoryName.length > 0 && imgURL.length > 0;
+
     return (
+
+
     	<Flexbox className="registration-page">
 			<h1>{this.props.imageAction} this look?</h1>
 
-      		<form onSubmit={this.handleSubmit}>
+      		<form id="save-edit-form" onSubmit={this.handleSubmit}>
 
-					<input name="imgURL" type="image" src={this.props.imgURL} value={this.props.imgURL} className="img-look" />
+					<input name="imgURL" type="image" src={this.props.imgURL} value={this.props.imgURL} alt={this.props.imgAlt} className="img-look" disabled={true} />
       			<select name="categoryName" onChange={this.handleChange}>
 							<option value="">Please select a category:</option>
 							<option value="day-looks">Day Looks</option>
@@ -86,7 +102,7 @@ class Test extends React.Component {
 			        <option value="cultural-looks">Cultural Looks</option>
 		         </select>
 
-				<input className="register-form" type="submit" value="save" />
+				<input className="register-form" type="submit" value="save" disabled={!isEnabled}/>
 
 			 </form>
 
@@ -100,4 +116,4 @@ class Test extends React.Component {
   }
 }
 
-export default Test;
+export default ImageTile;

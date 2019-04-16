@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, 
   Route, 
-  Link, 
   Switch } from "react-router-dom";
-
-import logo from './images/logo.svg';
 
 import Landing from './components/LandingPage.js';
 import Register from './components/register.js';

@@ -6,6 +6,7 @@ import '../css/Modal.css';
 export class Modal extends React.Component {
     render() {
         let x = this.props;
+
         const modalStyle = {
             display: `${x.showModal}`,  
             position: 'fixed', 
@@ -26,14 +27,14 @@ export class Modal extends React.Component {
             textAlign: 'center'
         }
 
-        const closeStyle = {
-            position: 'absolute',
-            top: '15px',
-            right: '35px',
-            color: '#f1f1f1',
-            fontSize: '40px',
-            fontWeight: 'bold',
-        }
+        // const closeStyle = {
+        //     position: 'absolute',
+        //     top: '15px',
+        //     right: '35px',
+        //     color: '#f1f1f1',
+        //     fontSize: '40px',
+        //     fontWeight: 'bold',
+        // }
 
         return ( 
             <Flexbox className='all-use-modal' style={modalStyle}>

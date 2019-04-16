@@ -21,6 +21,7 @@
     "classnames": "^2.2.6",
     "express": "^4.15.4",
     "flexbox-react": "^4.4.0",
+    "jshint": "^2.10.2",
     "mongoose": "^5.3.16",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

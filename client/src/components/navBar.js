@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import header from '../images/header.png';
-import { BrowserRouter as Router, 
-  Route, 
-  Link, 
-  Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
  
 class NavBar extends Component {
   render() {

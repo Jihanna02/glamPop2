@@ -7,6 +7,7 @@ mongoose.Promise = global.Promise;
 var LookSchema = new Schema({
 
 	imgURL: String,
+	imgAlt: String,
 	categoryName: String,
 	created_at: Date
 });
