@@ -72,6 +72,7 @@ class Gallery extends react.Component {
         let imageIcon = "";
         let imageAltText = "";
         let imageAction = "";
+        let imageID = "";
 
 				if (this.props.galleryType === "api") {
           imageURL = obj.urls.regular;
@@ -84,6 +85,7 @@ class Gallery extends react.Component {
           imageAltText = obj.imgAlt;
           imageIcon = require('../images/icon-edit.svg');
           imageAction = "edit";
+          imageID = obj._id;
 
 				}
 
@@ -91,7 +93,7 @@ class Gallery extends react.Component {
                 
                 this.setState({
                   showModal:'block',
-                  content:<ImageTile imgURL={imageURL} imgAlt={imageAltText} imageAction={imageAction}/>
+                  content:<ImageTile imgURL={imageURL} imgAlt={imageAltText} imageAction={imageAction} imgID={imageID}/>
                 });
 
                 }}>

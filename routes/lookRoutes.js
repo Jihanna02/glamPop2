@@ -5,9 +5,12 @@ const { User, Looks } = require("../models");
 // Matches with "/api/looks/"
 //route for post new look to database and returns information
 router.post("/", function ( req, res ) {
+	// console.log("this is a post")
+	// console.log(req.body);
+	// console.log("__________")
 	Looks.create(req.body)
-		.then((dbUser) => {
-			res.json(dbUser);
+		.then((res) => {
+			res.json(res);
 		})
 		.catch((err) => {
 			res.json(err);
@@ -16,32 +19,43 @@ router.post("/", function ( req, res ) {
 	})
 
 // Matches with "/api/looks/", returns everything in the "looks" collection
- router.get("/", function (req,res){
- 		Looks.find()
- 			.then(response=>{
- 				res.json(response)
- 				console.log(response)
- 			})
+router.get("/", function (req,res){
+ 	Looks.find()
+		.then(response=>{
+			res.json(response)
 
+		})
 	})
- // Matches with "/api/categories/id/id:", returns everything in the ID collection
- router.get("/imgURL/:imgURL", function (req,res){
-	Looks.find()
-	.then(response=>{
-		res.json(response)
-		console.log(response)
-	})
+
+// Matches with "/api/looks/:id", finds a single look by id
+router.get("/:id", function (req,res){
+	Looks.find({ _id: req.params.id})
+		.then(response=>{
+			res.json(response)
+		})
+
 })
 
- // Matches with "/api/categories/id/id:", returns everything in the ID collection
- router.get("/id/:id", function (req,res){
- 		Looks
- 		.findById(req.params.id)
- 		.then(response=>{
- 			res.json(response)
- 			console.log(response)
- 		})
-	})
+// Matches with "/api/looks/:id", finds a single look by id and deletes
+router.get("/delete/:id", function (req,res){
+	Looks.findOneAndDelete({ _id: req.params.id})
+		.then(response=>{
+			res.json(response);
+		})
+})
+
+// Matches with "/api/looks/:id", finds a single look by id
+router.get("/update/:id", function (req, res){
+	// Looks.find({ _id: req.params.id})
+	// 	.then(response=>{
+	// 		res.json(response)
+	// 		console.log(response)
+	// 	})
+
+	// res.json(req.params);
+
+})
+
 
 
 

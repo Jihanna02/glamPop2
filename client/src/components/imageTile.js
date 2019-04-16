@@ -11,7 +11,8 @@ class ImageTile extends React.Component {
 		this.state = {
 			categoryName: "",
       imgURL: "",
-      imgAlt: ""
+      imgAlt: "",
+      imgID: ""
     };
 
 		this.handleChange = this.handleChange.bind(this);
@@ -22,12 +23,7 @@ class ImageTile extends React.Component {
 
     const {name,value} = event.target;
 
-		this.setState({
-      
-      [name]:value}, () => {
-        this.setState({
-          imgURL:this.props.imgURL,
-          imgAlt: this.props.imgAlt}, () => {});
+    this.setState({[name]:value, imgURL: this.props.imgURL, imgAlt: this.props.imgAlt, imgID: this.props.imgID}, function () {
     });
 
   }
@@ -35,9 +31,9 @@ class ImageTile extends React.Component {
   handleSubmit = (event) => {
 
     event.preventDefault();
-    
+
     if (this.props.imageAction === "save") {
-      axios.post('/api/looks', this.state)
+      axios.post('/api/looks/', this.state)
       .then( (res) => {
         alert("Image saved.");
 
@@ -48,9 +44,7 @@ class ImageTile extends React.Component {
 
     } else if (this.props.imageAction === "edit") {
 
-      console.log(this.props.imgURL);
-
-      axios.get(`/api/looks/imgURL/${this.props.imgURL}`)
+      axios.get(`/api/looks/update/${this.state.imgID}`)
       .then( (res) => {
         console.log(res.data);
 
@@ -102,13 +96,22 @@ class ImageTile extends React.Component {
 			        <option value="cultural-looks">Cultural Looks</option>
 		         </select>
 
-				<input className="register-form" type="submit" value="save" disabled={!isEnabled}/>
+        <input className="register-form" type="submit" value="save" 
+        disabled={!isEnabled}
+        />
 
+       <button className={buttonClasses} imgid={this.props.imgID} onClick={() => {
+
+        axios.get(`/api/looks/delete/${this.props.imgID}`)
+        .then( (res) => {
+          console.log(res.data);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+
+        }}>Delete</button>
 			 </form>
-
-       <button className={buttonClasses} onClick={() => {
-
-       }}>Delete</button>
 
 	    </Flexbox>
 
