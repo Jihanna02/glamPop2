@@ -37,7 +37,7 @@ router.get("/:id", function (req,res){
 })
 
 // Matches with "/api/looks/:id", finds a single look by id and deletes
-router.get("/delete/:id", function (req,res){
+router.delete("/delete/:id", function (req,res){
 	Looks.findOneAndDelete({ _id: req.params.id})
 		.then(response=>{
 			res.json(response);
@@ -45,16 +45,26 @@ router.get("/delete/:id", function (req,res){
 })
 
 // Matches with "/api/looks/:id", finds a single look by id
-router.get("/update/:id", function (req, res){
-	// Looks.find({ _id: req.params.id})
-	// 	.then(response=>{
-	// 		res.json(response)
-	// 		console.log(response)
-	// 	})
+router.put("/update/:id", function ( req, res, next ) {
 
-	// res.json(req.params);
+	Looks.findOneAndUpdate({_id: req.params.id}, req.body)
+	.then(function(){
+		Looks.findOne({_id: req.params.id}).then(function(categoryName){
+			res.send(categoryName);
+		})
+	})
 
-})
+	})
+// router.post("/update/", function (req, res){
+
+// 	Looks.findOneAndUpdate({_id: req.body.imgID}, {$set:{categoryName:req.body.categoryName}}, {new: true}, (err, doc) => {
+// 		if (err) {
+// 			res.json(err);
+// 		}
+// 		res.json(response);
+// 	});
+
+// })
 
 
 

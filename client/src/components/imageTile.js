@@ -44,14 +44,15 @@ class ImageTile extends React.Component {
 
     } else if (this.props.imageAction === "edit") {
 
-      axios.get(`/api/looks/update/${this.state.imgID}`)
+      axios.put(`/api/looks/update/${this.state.imgID}`, this.state)
       .then( (res) => {
-        console.log(res.data);
+        alert("Image updated.");
 
       })
-      .catch(function (err) {
-        console.log(err);
+      .catch((err) => {
+        alert("Image not updated. Please try again.");
       });
+
     }
 
     const resetForm = () => {
@@ -59,7 +60,7 @@ class ImageTile extends React.Component {
     };
 
     resetForm();
-  
+    
   }
 
   render() {
@@ -102,7 +103,7 @@ class ImageTile extends React.Component {
 
        <button className={buttonClasses} imgid={this.props.imgID} onClick={() => {
 
-        axios.get(`/api/looks/delete/${this.props.imgID}`)
+        axios.delete(`/api/looks/delete/${this.props.imgID}`)
         .then( (res) => {
           console.log(res.data);
         })
