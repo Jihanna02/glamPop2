@@ -1,4 +1,4 @@
-import React, * as react from 'react';
+import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
 
 import NavBar from './navBar.js';

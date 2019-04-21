@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
 
 import '../css/Modal.css';
