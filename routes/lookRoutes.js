@@ -36,6 +36,15 @@ router.get("/user/:userID", function (req,res){
 		})
    })
 
+// Matches with "/api/looks/:userID/:filter", returns everything in the "looks" collection by user with a specific filter
+router.get("/user/:userID/:filter", function (req,res){
+	Looks.find({ userID: req.params.userID, categoryName: req.params.filter})
+		.then(response=>{
+			res.json(response)
+		})
+   })
+
+
 // Matches with "/api/looks/:id", finds a single look by id
 router.get("/:id", function (req,res){
 	Looks.find({ _id: req.params.id})

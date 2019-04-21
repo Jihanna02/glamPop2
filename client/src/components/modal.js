@@ -3,7 +3,7 @@ import Flexbox from 'flexbox-react';
 
 import '../css/Modal.css';
 
-export class Modal extends React.Component {
+export class Modal extends Component {
     render() {
         let x = this.props;
 
@@ -26,15 +26,6 @@ export class Modal extends React.Component {
             color: '#f1f1f1', 
             textAlign: 'center'
         }
-
-        // const closeStyle = {
-        //     position: 'absolute',
-        //     top: '15px',
-        //     right: '35px',
-        //     color: '#f1f1f1',
-        //     fontSize: '40px',
-        //     fontWeight: 'bold',
-        // }
 
         return ( 
             <Flexbox className='all-use-modal' style={modalStyle}>

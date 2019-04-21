@@ -6,7 +6,7 @@ import FooterBar from './footerBar.js';
 
 import Gallery from './gallery.js';
 
-class lookPage extends react.Component {
+class lookPage extends Component {
   render() {
 
     return (

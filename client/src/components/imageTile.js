@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import '../css/Modal.css';
 
-class ImageTile extends React.Component {
+class ImageTile extends Component {
   
 	constructor(props){
 		super(props);

@@ -7,7 +7,26 @@ import FooterBar from './footerBar.js';
 
 import Gallery from './gallery.js';
 
-class lookPage extends react.Component {
+class lookPage extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      filter: "all-looks",
+
+    };
+    
+  }
+
+  updateThisFilter = (text) => {
+
+    this.setState({filter: text}, function () {
+      
+    });
+
+    }
+
   render() {
 
     return (
@@ -17,9 +36,9 @@ class lookPage extends react.Component {
           <NavBar />
 
           <h2 className="component-heading">Review your saved looks.</h2>
-          <FilterBar />
+          <FilterBar update={this.updateThisFilter} />
 
-          <Gallery galleryType="database" userId={this.props.userId}/>
+          <Gallery galleryType="database" userId={this.props.userId} filter={this.state.filter}/>
 
           <FooterBar />
           

@@ -1,18 +1,15 @@
-//npm-packages
+
 import React, { Component } from 'react';
 
 import axios from 'axios';
 import Flexbox from 'flexbox-react';
 
-//components
 import Modal from './modal.js';
 import Register from './Register.js';
 import FooterBar from './footerBar.js';
 
-//css
 import '../css/landingPage.css';
 
-//images
 import header from '../images/header.png';
 
 class LandingPage extends Component {

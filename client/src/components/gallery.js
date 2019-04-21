@@ -6,18 +6,22 @@ import { toJson } from "unsplash-js";
 import Modal from './modal.js';
 import ImageTile from './imageTile.js';
 
-// const userID = window.sessionStorage.getItem(userID);
-// console.log(userID);
+class Gallery extends Component {
 
-class Gallery extends react.Component {
-  state = {
-    pics: [],
-    pixObj:[],
+  constructor(props){
+    super(props);
 
-    showModal:'none',
-    content:'',
-
-    userID: this.props.userId
+    this.state = {
+      pics: [],
+      pixObj:[],
+  
+      showModal:'none',
+      content:'',
+  
+      userID: this.props.userId,
+      filter: this.props.filter
+    };
+    
   }
 
   _closeModal = () => {
@@ -39,16 +43,38 @@ class Gallery extends react.Component {
 			.then(toJson)
 			.then(json => {
         const apiObject = json;
-        
-        
-        // alt_description
-
 
 				this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
   
 
 
-			});
+      });
+      
+        //save this for infinite scroll
+        // componentDidUpdate(prevProps) {
+        //   // Typical usage (don't forget to compare props):
+        //   if (this.props.filter !== prevProps.filter) {
+            
+        //   this.setState({filter: this.props.filter}, function () {
+
+        //     axios.get(`/api/looks/user/${this.state.userID}`+"/"+`${this.state.filter}`)
+        // 		.then( res => {
+              
+        // 			const apiObject = res.data;
+        //       this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
+              
+        //       console.log("rerendered");
+        //       console.log(res.data);
+        
+        // 		})
+        // 		.catch(function (error) {
+        // 			console.log(error);
+        // 		});
+            
+        //   });
+
+        //   }
+        // }
 
 		} else if (this.props.galleryType === "database"){
 
@@ -62,7 +88,46 @@ class Gallery extends react.Component {
 			.catch(function (error) {
 				console.log(error);
 			});
-		}
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    
+    if (this.props.filter !== prevProps.filter) {
+
+      if (this.props.filter === "all-looks") {
+        axios.get(`/api/looks/user/${this.state.userID}`)
+        .then( res => {
+          
+          const apiObject = res.data;
+          this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
+    
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      } else {
+
+        this.setState({filter: this.props.filter}, function () {
+
+          axios.get(`/api/looks/user/${this.state.userID}`+"/"+`${this.state.filter}`)
+          .then( res => {
+            
+            const apiObject = res.data;
+            this.setState({pixObj:[]});
+            this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
+      
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          
+        });
+
+      }
+
+    }
   }
 
   render() {

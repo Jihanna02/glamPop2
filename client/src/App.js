@@ -10,16 +10,13 @@ import SavedPage from './components/SavedPage.js';
 
 import './css/App.css';
 
-//actual app starts here
-
-
 class App extends Component {
 
   constructor(props){
     super(props);
     this.state = {
 
-      userId: "version one"
+      userId: ""
 
     };
 
@@ -28,7 +25,7 @@ class App extends Component {
   updateThisId = (text) => {
 
     this.setState({userId: text}, function () {
-      // console.log(this.state.userId);
+
     });
 
     }
@@ -55,6 +52,8 @@ class App extends Component {
               path='/register' 
               render={(props) => <Register {...props} userId={this.state.userId} />}
               />
+
+
 
               <Route 
               path='/looks' 

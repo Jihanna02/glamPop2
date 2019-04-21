@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../css/Modal.css';
 
 
-class Register extends React.Component {
+class Register extends Component {
 
   handleChange = (event) => {
 
@@ -33,9 +33,6 @@ class Register extends React.Component {
 
 
   render() {
-
-    console.log(this.props.userId);
-    console.log(this.props.greeting);
 
     return (
 
