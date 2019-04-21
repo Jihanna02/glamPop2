@@ -8,6 +8,7 @@ import Gallery from './gallery.js';
 
 class lookPage extends react.Component {
   render() {
+
     return (
       <section>
         <Flexbox className="looks-page">

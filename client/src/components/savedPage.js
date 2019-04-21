@@ -9,6 +9,7 @@ import Gallery from './gallery.js';
 
 class lookPage extends react.Component {
   render() {
+
     return (
       <section>
         <Flexbox className="looks-page">
@@ -18,7 +19,7 @@ class lookPage extends react.Component {
           <h2 className="component-heading">Review your saved looks.</h2>
           <FilterBar />
 
-          <Gallery galleryType="database" />
+          <Gallery galleryType="database" userId={this.props.userId}/>
 
           <FooterBar />
           

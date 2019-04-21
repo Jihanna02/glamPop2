@@ -27,6 +27,15 @@ router.get("/", function (req,res){
 		})
 	})
 
+
+// Matches with "/api/looks/:userID", returns everything in the "looks" collection by user
+router.get("/user/:userID", function (req,res){
+	Looks.find({ userID: req.params.userID})
+		.then(response=>{
+			res.json(response)
+		})
+   })
+
 // Matches with "/api/looks/:id", finds a single look by id
 router.get("/:id", function (req,res){
 	Looks.find({ _id: req.params.id})
@@ -44,7 +53,7 @@ router.delete("/delete/:id", function (req,res){
 		})
 })
 
-// Matches with "/api/looks/:id", finds a single look by id
+// Matches with "/api/looks/update/:id", finds a single look by id and updates
 router.put("/update/:id", function ( req, res, next ) {
 
 	Looks.findOneAndUpdate({_id: req.params.id}, req.body)
@@ -55,17 +64,6 @@ router.put("/update/:id", function ( req, res, next ) {
 	})
 
 	})
-// router.post("/update/", function (req, res){
-
-// 	Looks.findOneAndUpdate({_id: req.body.imgID}, {$set:{categoryName:req.body.categoryName}}, {new: true}, (err, doc) => {
-// 		if (err) {
-// 			res.json(err);
-// 		}
-// 		res.json(response);
-// 	});
-
-// })
-
 
 
 

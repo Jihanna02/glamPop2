@@ -15,7 +15,9 @@ class Gallery extends react.Component {
     pixObj:[],
 
     showModal:'none',
-    content:''
+    content:'',
+
+    userID: this.props.userId
   }
 
   _closeModal = () => {
@@ -50,7 +52,7 @@ class Gallery extends react.Component {
 
 		} else if (this.props.galleryType === "database"){
 
-			axios.get(`/api/looks`)
+			axios.get(`/api/looks/user/${this.state.userID}`)
 			.then( res => {
 				
 				const apiObject = res.data;
@@ -64,6 +66,7 @@ class Gallery extends react.Component {
   }
 
   render() {
+
     let pix;
     if(this.state.pixObj){
       pix = this.state.pixObj.map((obj,i) => {

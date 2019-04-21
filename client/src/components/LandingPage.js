@@ -6,7 +6,7 @@ import Flexbox from 'flexbox-react';
 
 //components
 import Modal from './modal.js';
-import Register from './register.js';
+import Register from './Register.js';
 import FooterBar from './footerBar.js';
 
 //css
@@ -47,10 +47,9 @@ class LandingPage extends Component {
                 let loggedIn = res.data[0].password.toUpperCase() === this.state.password.toUpperCase();
   
                 if ( loggedIn === true ) { 
-                  sessionStorage.setItem("idNumber", res.data[0]._id);
-      
-                  // let idNumber = sessionStorage.getItem("idNumber");
-  
+
+                  this.props.updateToId(res.data[0]._id);
+                  
                   return this.props.history.push("/looks");
   
                  } else {
@@ -75,6 +74,7 @@ class LandingPage extends Component {
     }
 
   render() {
+
     return (
       <section className="container">
           <Flexbox flexDirection="column" className="landing">

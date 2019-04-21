@@ -9,6 +9,7 @@ var LookSchema = new Schema({
 	imgURL: String,
 	imgAlt: String,
 	categoryName: String,
+	userID: String,
 	created_at: Date
 });
 

@@ -4,9 +4,9 @@ import { BrowserRouter as Router,
   Switch } from "react-router-dom";
 
 import Landing from './components/LandingPage.js';
-import Register from './components/register.js';
-import lookPage from './components/lookPage.js';
-import savedPage from './components/savedPage.js';
+import Register from './components/Register.js';
+import LookPage from './components/LookPage.js';
+import SavedPage from './components/SavedPage.js';
 
 import './css/App.css';
 
@@ -19,17 +19,22 @@ class App extends Component {
     super(props);
     this.state = {
 
-      userId: "testing",
+      userId: "version one"
 
     };
-  }
-
-  componentDidMount(){
-  
 
   }
+
+  updateThisId = (text) => {
+
+    this.setState({userId: text}, function () {
+      // console.log(this.state.userId);
+    });
+
+    }
 
   render() {
+
     return (
       <div className="App">
 
@@ -39,18 +44,11 @@ class App extends Component {
 
             <Switch>
 
-              <Route exact path='/' component={Landing}/>
-              <Route path='/register' component={Register}/>
-              <Route path='/looks' component={lookPage}/> 
-              <Route path='/saved' component={savedPage}/>       
-
-              {/*
-
-              component routes with username state passed down as props
+              {/* component routes with username state passed down as props */}
 
               <Route 
-              path='/' 
-              render={(props) => <Landing {...props} userId={this.state.userId} />}
+              exact path='/' 
+              render={(props) => <Landing {...props} userId={this.state.userId} updateToId={this.updateThisId}/>}
               />
 
               <Route 
@@ -59,11 +57,15 @@ class App extends Component {
               />
 
               <Route 
-              path='/register' 
-              render={(props) => <Main {...props} userId={this.state.userId} />}
+              path='/looks' 
+              render={(props) => <LookPage {...props} userId={this.state.userId} />}
               />
 
-             */}
+              <Route 
+              path='/saved' 
+              render={(props) => <SavedPage {...props} userId={this.state.userId} />}
+              />
+
               
 
             </Switch>

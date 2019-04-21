@@ -7,7 +7,6 @@ import '../css/Modal.css';
 
 class Register extends React.Component {
 
-
   handleChange = (event) => {
 
     const {name,value} = event.target
@@ -34,6 +33,10 @@ class Register extends React.Component {
 
 
   render() {
+
+    console.log(this.props.userId);
+    console.log(this.props.greeting);
+
     return (
 
       <Flexbox className="registration-page">

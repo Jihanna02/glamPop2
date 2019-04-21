@@ -12,7 +12,8 @@ class ImageTile extends React.Component {
 			categoryName: "",
       imgURL: "",
       imgAlt: "",
-      imgID: ""
+      imgID: "",
+      userID: sessionStorage.getItem("idNumber")
     };
 
 		this.handleChange = this.handleChange.bind(this);
