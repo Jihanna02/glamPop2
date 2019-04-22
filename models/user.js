@@ -21,14 +21,14 @@ var UserSchema = new Schema({
   password: String
 });
 
-UserSchema.pre('save', function(next){
- now = new Date();
- this.updated_at = now;
- if ( !this.created_at ) {
-  this.created_at = now;
- }
- next();
- 
+UserSchema.pre('save', function (next) {
+  now = new Date();
+  this.updated_at = now;
+  if (!this.created_at) {
+    this.created_at = now;
+  }
+  next();
+
 });
 
 var User = mongoose.model("User", UserSchema);
