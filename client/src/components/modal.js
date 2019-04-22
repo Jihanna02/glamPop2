@@ -3,6 +3,13 @@ import Flexbox from 'flexbox-react';
 
 import '../css/Modal.css';
 
+import { BrowserRouter as Router, 
+    Route, Redirect, 
+    Switch } from "react-router-dom";
+  
+import Welcome from './Welcome.js';
+import RegError from './RegError.js';
+
 export class Modal extends Component {
     render() {
         let x = this.props;
@@ -35,6 +42,8 @@ export class Modal extends Component {
                 }} style={modalContent}>close</p>
                 
                 <div className='content-wrapper'>{x.content}</div>
+
+ 
 
             </Flexbox>
         )        

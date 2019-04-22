@@ -19,7 +19,10 @@ class Gallery extends Component {
       content:'',
   
       userID: this.props.userId,
-      filter: this.props.filter
+      filter: this.props.filter,
+      scrollPosition: "",
+      pageNumber: 0,
+      needScroll: false
     };
     
   }
@@ -45,36 +48,8 @@ class Gallery extends Component {
         const apiObject = json;
 
 				this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
-  
-
 
       });
-      
-        //save this for infinite scroll
-        // componentDidUpdate(prevProps) {
-        //   // Typical usage (don't forget to compare props):
-        //   if (this.props.filter !== prevProps.filter) {
-            
-        //   this.setState({filter: this.props.filter}, function () {
-
-        //     axios.get(`/api/looks/user/${this.state.userID}`+"/"+`${this.state.filter}`)
-        // 		.then( res => {
-              
-        // 			const apiObject = res.data;
-        //       this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
-              
-        //       console.log("rerendered");
-        //       console.log(res.data);
-        
-        // 		})
-        // 		.catch(function (error) {
-        // 			console.log(error);
-        // 		});
-            
-        //   });
-
-        //   }
-        // }
 
 		} else if (this.props.galleryType === "database"){
 
@@ -89,7 +64,48 @@ class Gallery extends Component {
 				console.log(error);
 			});
     }
+
+    window.addEventListener('scroll', this.onScroll);
+
   }
+
+  //infinite scroll (in-progress)
+  // onScroll = () => {
+
+  //   if((window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 200)){
+      
+  //     this.setState({needScroll: true}, function () {
+
+  //       const Unsplash = require('unsplash-js').default;
+ 
+  //       const unsplash = new Unsplash({
+  //         applicationId: "89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9",
+  //         secret: "07f9578de6c18570497cac47d8fb2fc6c6559c8b34163720b059ac3ec7de4d6c"
+  //       });
+
+  //       const page = this.props.pageNumber + 1;
+    
+  //       unsplash.collections.getCollectionPhotos(1714447, page, 30, "popular")
+  //       .then(toJson)
+  //       .then(json => {
+  //         const apiObject = json;
+  
+  //         this.setState({pixObj:[...this.state.pixObj, ...apiObject]});
+  
+  //       });
+  
+
+  //       console.log(this.state.needScroll);
+
+  //     })
+  //   }
+
+  // }
+  
+  // componentWillUnmount() {
+  //   window.removeEventListener('scroll', this.onScroll);
+  // }
+
 
   componentDidUpdate(prevProps) {
     
