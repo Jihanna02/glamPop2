@@ -7,39 +7,39 @@
 }
 
 .content-wrapper {
-    margin:auto;
-    padding:0 20px;
+    margin: auto;
+    padding: 0 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .content-wrapper>img {
-    width:100%;
+    width: 100%;
 }
 
 .registration-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  background-color: white;
-  padding: 30px;
+    background-color: white;
+    padding: 30px;
 }
 
 .registration-page form {
-  margin: 0;
+    margin: 0;
 }
 
 input.register-form {
-	padding: 5px;
-	margin: 5px;
+    padding: 5px;
+    margin: 5px;
 }
 
 input[type=submit].register-form {
-	padding: 10px;
-	color: #EFFAEE;
-	text-transform: uppercase;
-	background-color: #F45F55;
-	border: 1px solid #dfdfdf;
+    padding: 10px;
+    color: #EFFAEE;
+    text-transform: uppercase;
+    background-color: #F45F55;
+    border: 1px solid #dfdfdf;
 }

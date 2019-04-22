@@ -6,19 +6,22 @@
 }
 
 .landing {
-	height: 100vh;
-	width: 100vw;
-	background-color: #EC4068;
-	background: -webkit-linear-gradient(top left, #F45F55, #EC4068, #AE2E7A);
-	background: -o-linear-gradient(top left, #F45F55, #EC4068, #AE2E7A);
-	background: linear-gradient(to bottom right, #F45F55, #EC4068, #AE2E7A);
+  height: 100vh;
+  width: 100vw;
+  background-color: #EC4068;
+  background: -webkit-linear-gradient(top left, #F45F55, #EC4068, #AE2E7A);
+  background: -o-linear-gradient(top left, #F45F55, #EC4068, #AE2E7A);
+  background: linear-gradient(to bottom right, #F45F55, #EC4068, #AE2E7A);
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
 
   flex: none;
   align-self: center;
@@ -34,13 +37,15 @@ form {
 
 }
 
-select, input, button {
+select,
+input,
+button {
   border-width: 0px;
   background-color: #FFFFFF;
-	box-sizing: border-box;
+  box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  
+
   width: 30vw;
   margin: 2px;
   padding: 3px;
@@ -48,6 +53,6 @@ select, input, button {
 }
 
 input[type=submit] {
-    text-transform: uppercase;
-    color: #1D142E;
+  text-transform: uppercase;
+  color: #1D142E;
 }
