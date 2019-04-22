@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Flexbox from "flexbox-react";
 
-import Modal from "./Modal.js";
+import ModalWindow from "./ModalWindow.js";
 import RegistrationPage from "./RegistrationPage.js";
 import FooterBar from "./FooterBar.js";
 
@@ -119,7 +119,7 @@ class LandingPage extends Component {
 
         <FooterBar />
 
-        <Modal
+        <ModalWindow
           showModal={this.state.showModal}
           closeModal={this._closeModal}
           content={this.state.content}

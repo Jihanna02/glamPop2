@@ -3,7 +3,7 @@ import Flexbox from "flexbox-react";
 
 import "../css/Modal.css";
 
-export class Modal extends Component {
+export class ModalWindow extends Component {
   render() {
     let x = this.props;
 
@@ -45,4 +45,4 @@ export class Modal extends Component {
   }
 }
 
-export default Modal;
+export default ModalWindow;

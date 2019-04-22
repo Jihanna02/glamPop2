@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { toJson } from "unsplash-js";
 
-import Modal from "./Modal.js";
+import ModalWindow from "./ModalWindow.js";
 import ImageTile from "./ImageTile.js";
 
 class Gallery extends Component {
@@ -231,7 +231,7 @@ class Gallery extends Component {
       <div className={masonryClass}>
         {pix}
 
-        <Modal
+        <ModalWindow
           showModal={this.state.showModal}
           closeModal={this._closeModal}
           content={this.state.content}
