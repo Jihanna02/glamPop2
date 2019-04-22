@@ -4,6 +4,39 @@ import axios from 'axios';
 
 import '../css/Modal.css';
 
+function ImageSaved() {
+  return(
+    <div className="registration-page">
+      <h3>This image was saved. Please visit the saved page to review your looks.</h3>
+    </div>
+    )
+}
+
+function ImageEdit() {
+  return(
+    <div className="registration-page">
+      <h3>This image was updated.</h3>
+    </div>
+    )
+}
+
+function ImageError() {
+  return(
+    <div className="registration-page">
+      <h3>There was an error. Please try again.</h3>
+    </div>
+    )
+}
+
+function ImageDelete() {
+  return(
+    <div className="registration-page">
+      <h3>This image was deleted.</h3>
+    </div>
+    )
+}
+
+
 class ImageTile extends Component {
   
 	constructor(props){
@@ -33,25 +66,33 @@ class ImageTile extends Component {
 
     event.preventDefault();
 
+    let message;
+
     if (this.props.imageAction === "save") {
       axios.post('/api/looks/', this.state)
       .then( (res) => {
-        alert("Image saved.");
+        
+        message = <ImageSaved />
+        this.props.updateState(message);
 
       })
       .catch((err) => {
-        alert("Image not saved. Please try again.");
+        message = <ImageError />
+        this.props.updateState(message);
+
       });
 
     } else if (this.props.imageAction === "edit") {
 
       axios.put(`/api/looks/update/${this.state.imgID}`, this.state)
       .then( (res) => {
-        alert("Image updated.");
+        message = <ImageEdit />
+        this.props.updateState(message);
 
       })
       .catch((err) => {
-        alert("Image not updated. Please try again.");
+        message = <ImageError />
+        this.props.updateState(message);
       });
 
     }
@@ -104,12 +145,16 @@ class ImageTile extends Component {
 
        <button className={buttonClasses} imgid={this.props.imgID} onClick={() => {
 
+        let message;
+
         axios.delete(`/api/looks/delete/${this.props.imgID}`)
         .then( (res) => {
-          console.log(res.data);
+          message = <ImageDelete />
+          this.props.updateState(message);
         })
         .catch(function (err) {
-          console.log(err);
+          message = <ImageError />
+          this.props.updateState(message);
         });
 
         }}>Delete</button>

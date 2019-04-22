@@ -6,6 +6,7 @@ import { toJson } from "unsplash-js";
 import Modal from './modal.js';
 import ImageTile from './imageTile.js';
 
+
 class Gallery extends Component {
 
   constructor(props){
@@ -26,6 +27,17 @@ class Gallery extends Component {
     };
     
   }
+
+  updateThisState = (message) => {
+
+    this.setState({showModal:'none'});
+    this.setState({
+      showModal:'block',
+      content: message
+    });
+
+
+    }
 
   _closeModal = () => {
     this.setState({showModal:'none'})
@@ -127,7 +139,7 @@ class Gallery extends Component {
 
         this.setState({filter: this.props.filter}, function () {
 
-          axios.get(`/api/looks/user/${this.state.userID}`+"/"+`${this.state.filter}`)
+          axios.get(`/api/looks/user/${this.state.userID}+"/"+${this.state.filter}`)
           .then( res => {
             
             const apiObject = res.data;
@@ -177,7 +189,7 @@ class Gallery extends Component {
                 
                 this.setState({
                   showModal:'block',
-                  content:<ImageTile imgURL={imageURL} imgAlt={imageAltText} imageAction={imageAction} imgID={imageID}/>
+                  content:<ImageTile imgURL={imageURL} imgAlt={imageAltText} imageAction={imageAction} imgID={imageID} updateState={this.updateThisState}/>
                 });
 
                 }}>

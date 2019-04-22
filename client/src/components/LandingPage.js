@@ -12,6 +12,23 @@ import '../css/landingPage.css';
 
 import header from '../images/header.png';
 
+function PasswordError() {
+  return(
+    <div className="registration-page">
+      <h3>This password is incorrect. Please try again.</h3>
+    </div>
+    )
+}
+
+function UserError(){
+  return(
+    <div className="registration-page">
+      <h3>This username is incorrect. Please try again.</h3>
+    </div>
+  )
+}
+
+
 class LandingPage extends Component {
     constructor(props){
       super(props);
@@ -51,11 +68,11 @@ class LandingPage extends Component {
   
                  } else {
   
-                  alert("wrong password");
+                  this.setState({showModal:'block',content:<PasswordError /> });
                  }
   
               } else {
-                alert("user not found");
+                this.setState({showModal:'block',content:<UserError /> });
   
               }
             
@@ -63,7 +80,7 @@ class LandingPage extends Component {
       .catch( (err) => {
         console.log(err);
 
-        alert("username not found");
+        this.setState({showModal:'block',content:<UserError /> });
 
 
       });    

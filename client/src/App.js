@@ -7,8 +7,6 @@ import Landing from './components/LandingPage.js';
 import Register from './components/Register.js';
 import LookPage from './components/LookPage.js';
 import SavedPage from './components/SavedPage.js';
-import Welcome from './components/Welcome.js';
-import RegError from './components/RegError.js';
 
 import './css/App.css';
 
@@ -66,9 +64,6 @@ class App extends Component {
               path='/saved' 
               render={(props) => <SavedPage {...props} userId={this.state.userId} />}
               />
-
-              <Route path='/welcome' component={Welcome}/>
-              <Route path='/regerror' component={RegError}/> 
 
             </Switch>
 

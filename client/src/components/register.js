@@ -54,11 +54,7 @@ class RegForm extends Component {
     })
     .catch((err) => {
 
-      this.setState({
-        welcomeClass: "hidden",
-        errorClass: "",
-        formClass: "hidden" 
-      });
+      this.props.updateState("hidden","visible","hidden");
 
     });
 
