@@ -4,7 +4,7 @@ import Flexbox from "flexbox-react";
 import Nav from "./Nav.js";
 import Header from "./Header.js";
 import Footer from "./Footer.js";
-import Gallery from "./Gallery.js";
+import ImageGallery from "./ImageGallery.js";
 
 class LooksPage extends Component {
   render() {
@@ -17,7 +17,7 @@ class LooksPage extends Component {
 
           <h2 className="component-heading">Browse our daily looks!</h2>
 
-          <Gallery galleryType="api" userId={this.props.userId} />
+          <ImageGallery galleryType="api" userId={this.props.userId} />
 
           <Footer />
         </Flexbox>
