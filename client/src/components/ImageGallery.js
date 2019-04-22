@@ -4,7 +4,7 @@ import axios from "axios";
 import { toJson } from "unsplash-js";
 
 import ModalWindow from "./ModalWindow.js";
-import ImageTile from "./ImageTile.js";
+import ImageCard from "./ImageCard.js";
 
 class ImageGallery extends Component {
   constructor(props) {
@@ -203,7 +203,7 @@ class ImageGallery extends Component {
               this.setState({
                 showModal: "block",
                 content: (
-                  <ImageTile
+                  <ImageCard
                     imgURL={imageURL}
                     imgAlt={imageAltText}
                     imageAction={imageAction}

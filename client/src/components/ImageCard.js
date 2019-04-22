@@ -38,7 +38,7 @@ function ImageDelete() {
   );
 }
 
-class ImageTile extends Component {
+class ImageCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -166,4 +166,4 @@ class ImageTile extends Component {
   }
 }
 
-export default ImageTile;
+export default ImageCard;
