@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Flexbox from "flexbox-react";
 
-import NavBar from "./NavBar.js";
+import Nav from "./Nav.js";
 import Header from "./Header.js";
 import FilterBar from "./FilterBar.js";
 import Footer from "./Footer.js";
@@ -26,7 +26,7 @@ class SavedLooksPage extends Component {
         <Flexbox className="looks-page">
           <Header />
 
-          <NavBar />
+          <Nav />
 
           <h2 className="component-heading">Review your saved looks.</h2>
           <FilterBar update={this.updateThisFilter} />
