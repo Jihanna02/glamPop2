@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Landing from "./components/LandingPage.js";
 import RegistrationPage from "./components/RegistrationPage.js";
-import LookPage from "./components/LookPage.js";
+import LooksPage from "./components/LooksPage.js";
 import SavedPage from "./components/SavedPage.js";
 
 import "./css/App.css";
@@ -48,7 +48,7 @@ class App extends Component {
             <Route
               path="/looks"
               render={props => (
-                <LookPage {...props} userId={this.state.userId} />
+                <LooksPage {...props} userId={this.state.userId} />
               )}
             />
 
