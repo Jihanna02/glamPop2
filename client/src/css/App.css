@@ -61,6 +61,7 @@ div.img-card2 {
   position: relative;
   display: inline-block;
   height: 24vw;
+  padding: 3px 5px;
 }
 
 .img-look{
@@ -247,12 +248,11 @@ li.navLinks.nav-right {
   background: -o-linear-gradient(top, #F45F55, #EC4068, #AE2E7A);
   background: -webkit-gradient(linear, left top, left bottom, from(#F45F55), color-stop(#EC4068), to(#AE2E7A));
   background: linear-gradient(to bottom, #F45F55, #EC4068, #AE2E7A);
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: column wrap;
-  height: 110vh;
+  max-height: 125%;
+  min-height: 50vh;
   width: 100vw;
-
+  padding-top: 10px;
+  text-align: center;
 }
 
 div.masonryApi:hover .img-look { opacity: 1; }
