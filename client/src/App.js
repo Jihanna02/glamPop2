@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Landing from "./components/LandingPage.js";
-import Register from "./components/Register.js";
+import RegistrationPage from "./components/RegistrationPage.js";
 import LookPage from "./components/LookPage.js";
 import SavedPage from "./components/SavedPage.js";
 
@@ -41,7 +41,7 @@ class App extends Component {
             <Route
               path="/register"
               render={props => (
-                <Register {...props} userId={this.state.userId} />
+                <RegistrationPage {...props} userId={this.state.userId} />
               )}
             />
 

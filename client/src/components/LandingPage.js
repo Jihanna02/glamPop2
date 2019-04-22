@@ -4,7 +4,7 @@ import axios from "axios";
 import Flexbox from "flexbox-react";
 
 import Modal from "./Modal.js";
-import Register from "./Register.js";
+import RegistrationPage from "./RegistrationPage.js";
 import FooterBar from "./FooterBar.js";
 
 import "../css/landingPage.css";
@@ -108,7 +108,7 @@ class LandingPage extends Component {
             <a
               id="register-btn"
               onClick={() => {
-                this.setState({ showModal: "block", content: <Register /> });
+                this.setState({ showModal: "block", content: <RegistrationPage /> });
               }}
             >
               {" "}
