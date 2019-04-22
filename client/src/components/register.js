@@ -49,12 +49,12 @@ class RegForm extends Component {
     axios.post('/api/users', this.state)
     .then((res) => {
 
-      this.props.updateState("visible","hidden","hidden");
+      this.props.updateState("registration-page visible","hidden","hidden");
     
     })
     .catch((err) => {
 
-      this.props.updateState("hidden","visible","hidden");
+      this.props.updateState("registration-page hidden","visible","hidden");
 
     });
 
@@ -63,7 +63,6 @@ class RegForm extends Component {
   render(){
 
     return(
-      <div className="registration-page">
       <div className={this.props.className}>
         <h1>Create your FleekShow account</h1>
         <form onSubmit={this.handleSubmit}>
@@ -74,7 +73,6 @@ class RegForm extends Component {
           <input className="register-form" type="password" name="password"  placeholder="Password" onChange={(e) => this.handleChange(e)} required />
           <input className="register-form" type="submit" value="Submit" />
           </form>
-      </div>
       </div>
   )
 

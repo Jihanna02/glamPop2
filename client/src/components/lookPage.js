@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Flexbox from 'flexbox-react';
 
 import NavBar from './navBar.js';
+import Header from './Header.js';
+
 import FooterBar from './footerBar.js';
 
 import Gallery from './gallery.js';
@@ -12,6 +14,8 @@ class lookPage extends Component {
     return (
       <section>
         <Flexbox className="looks-page">
+
+          <Header />
 
           <NavBar />
 

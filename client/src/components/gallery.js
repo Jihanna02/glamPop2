@@ -40,7 +40,10 @@ class Gallery extends Component {
     }
 
   _closeModal = () => {
-    this.setState({showModal:'none'})
+    this.setState({showModal:'none'}, function(){
+      console.log("closing modal");
+      this.forceUpdate();
+    });
   }
 
   componentDidMount() {
@@ -54,7 +57,7 @@ class Gallery extends Component {
 				secret: "07f9578de6c18570497cac47d8fb2fc6c6559c8b34163720b059ac3ec7de4d6c"
 			});
 	
-			unsplash.collections.getCollectionPhotos(1714447, 1, 30, "popular")
+			unsplash.collections.getCollectionPhotos(1714447, 1, 30, "latest")
 			.then(toJson)
 			.then(json => {
         const apiObject = json;
@@ -77,7 +80,7 @@ class Gallery extends Component {
 			});
     }
 
-    window.addEventListener('scroll', this.onScroll);
+    // window.addEventListener('scroll', this.onScroll);
 
   }
 
@@ -139,7 +142,7 @@ class Gallery extends Component {
 
         this.setState({filter: this.props.filter}, function () {
 
-          axios.get(`/api/looks/user/${this.state.userID}+"/"+${this.state.filter}`)
+          axios.get(`/api/looks/user/${this.state.userID}/${this.state.filter}`)
           .then( res => {
             
             const apiObject = res.data;
@@ -161,7 +164,28 @@ class Gallery extends Component {
   render() {
 
     let pix;
+
+    let masonryClass;
+    let imageCardClass;
+    let imageLookClass;
+
+
     if(this.state.pixObj){
+
+      if(this.state.pixObj.length < 30){
+
+        masonryClass = "masonryApi2";
+        imageCardClass = "img-card2";
+        imageLookClass = "img-look2";
+
+      } else if (this.state.pixObj.length >= 30) {
+
+        masonryClass = "masonryApi";
+        imageCardClass = "img-card";
+        imageLookClass = "img-look";
+
+      }
+
       pix = this.state.pixObj.map((obj,i) => {
 
 				let imageURL = "";
@@ -185,7 +209,7 @@ class Gallery extends Component {
 
 				}
 
-        return <div  key={i} className="img-card" onClick={() => {
+        return <div  key={i} className={imageCardClass} onClick={() => {
                 
                 this.setState({
                   showModal:'block',
@@ -194,7 +218,7 @@ class Gallery extends Component {
 
                 }}>
                 
-                <img key={i} src={imageURL} alt={imageAltText} className="img-look" /> 
+                <img key={i} src={imageURL} alt={imageAltText} className={imageLookClass} /> 
                 <img src={imageIcon} alt="like" className="img-icon" />
 
               </div>
@@ -203,7 +227,7 @@ class Gallery extends Component {
 		
     return(
       
-        <div className="masonryApi">
+        <div className={masonryClass}>
 
           {pix}
 

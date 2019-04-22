@@ -119,19 +119,15 @@ class ImageTile extends Component {
 
     }
 
-    const {	categoryName, imgURL } = this.state;
-    const isEnabled = categoryName.length > 0 && imgURL.length > 0;
-
     return (
 
 
     	<Flexbox className="registration-page">
 			<h1>{this.props.imageAction} this look?</h1>
 
-      		<form id="save-edit-form" onSubmit={this.handleSubmit}>
-
-					<input name="imgURL" type="image" src={this.props.imgURL} value={this.props.imgURL} alt={this.props.imgAlt} className="img-look" disabled={true} />
-      			<select name="categoryName" onChange={this.handleChange}>
+      		<form id="save-edit-form" className="save-edit-form" onSubmit={this.handleSubmit}>
+					<input name="imgURL" type="image" src={this.props.imgURL} value={this.props.imgURL} alt={this.props.imgAlt} className="img-look-modal" disabled />
+      			<select name="categoryName" onChange={this.handleChange} required>
 							<option value="">Please select a category:</option>
 							<option value="day-looks">Day Looks</option>
 			        <option value="night-looks">Night Looks</option>
@@ -139,9 +135,7 @@ class ImageTile extends Component {
 			        <option value="cultural-looks">Cultural Looks</option>
 		         </select>
 
-        <input className="register-form" type="submit" value="save" 
-        disabled={!isEnabled}
-        />
+        <input className="register-form" type="submit" value="save" />
 
        <button className={buttonClasses} imgid={this.props.imgID} onClick={() => {
 
