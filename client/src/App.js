@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./components/LandingPage.js";
 import RegistrationPage from "./components/RegistrationPage.js";
 import LooksPage from "./components/LooksPage.js";
-import SavedPage from "./components/SavedPage.js";
+import SavedLooksPage from "./components/SavedLooksPage.js";
 
 import "./css/App.css";
 
@@ -55,7 +55,7 @@ class App extends Component {
             <Route
               path="/saved"
               render={props => (
-                <SavedPage {...props} userId={this.state.userId} />
+                <SavedLooksPage {...props} userId={this.state.userId} />
               )}
             />
           </Switch>
