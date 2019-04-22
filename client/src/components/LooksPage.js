@@ -3,7 +3,7 @@ import Flexbox from "flexbox-react";
 
 import NavBar from "./NavBar.js";
 import Header from "./Header.js";
-import FooterBar from "./FooterBar.js";
+import Footer from "./Footer.js";
 import Gallery from "./Gallery.js";
 
 class LooksPage extends Component {
@@ -19,7 +19,7 @@ class LooksPage extends Component {
 
           <Gallery galleryType="api" userId={this.props.userId} />
 
-          <FooterBar />
+          <Footer />
         </Flexbox>
       </section>
     );

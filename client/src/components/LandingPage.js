@@ -5,7 +5,7 @@ import Flexbox from "flexbox-react";
 
 import ModalWindow from "./ModalWindow.js";
 import RegistrationPage from "./RegistrationPage.js";
-import FooterBar from "./FooterBar.js";
+import Footer from "./Footer.js";
 
 import "../css/landingPage.css";
 
@@ -117,7 +117,7 @@ class LandingPage extends Component {
           </h4>
         </Flexbox>
 
-        <FooterBar />
+        <Footer />
 
         <ModalWindow
           showModal={this.state.showModal}

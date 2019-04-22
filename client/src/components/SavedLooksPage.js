@@ -4,7 +4,7 @@ import Flexbox from "flexbox-react";
 import NavBar from "./NavBar.js";
 import Header from "./Header.js";
 import FilterBar from "./FilterBar.js";
-import FooterBar from "./FooterBar.js";
+import Footer from "./Footer.js";
 import Gallery from "./Gallery.js";
 
 class SavedLooksPage extends Component {
@@ -37,7 +37,7 @@ class SavedLooksPage extends Component {
             filter={this.state.filter}
           />
 
-          <FooterBar />
+          <Footer />
         </Flexbox>
       </section>
     );
