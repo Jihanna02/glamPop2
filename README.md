@@ -1,4 +1,4 @@
-# Fleekshow App
+# Fleekshow
 ![Landing Page Screenshot](https://github.com/nessienessquik/fleekshow/blob/master/screenshots/img-01.png)
 
 ### Overview
