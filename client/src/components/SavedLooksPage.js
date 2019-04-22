@@ -3,7 +3,7 @@ import Flexbox from "flexbox-react";
 
 import Nav from "./Nav.js";
 import Header from "./Header.js";
-import FilterBar from "./FilterBar.js";
+import Filter from "./Filter.js";
 import Footer from "./Footer.js";
 import ImageGallery from "./ImageGallery.js";
 
@@ -29,7 +29,7 @@ class SavedLooksPage extends Component {
           <Nav />
 
           <h2 className="component-heading">Review your saved looks.</h2>
-          <FilterBar update={this.updateThisFilter} />
+          <Filter update={this.updateThisFilter} />
 
           <ImageGallery
             galleryType="database"
