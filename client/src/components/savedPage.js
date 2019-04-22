@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import Flexbox from "flexbox-react";
 
-import NavBar from "./navBar.js";
+import NavBar from "./NavBar.js";
 import Header from "./Header.js";
-import FilterBar from "./filterBar.js";
-import FooterBar from "./footerBar.js";
-
-import Gallery from "./gallery.js";
+import FilterBar from "./FilterBar.js";
+import FooterBar from "./FooterBar.js";
+import Gallery from "./Gallery.js";
 
 class lookPage extends Component {
   constructor(props) {

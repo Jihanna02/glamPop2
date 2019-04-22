@@ -68,7 +68,6 @@ class ImageTile extends Component {
   };
 
   handleSubmit = event => {
-
     event.preventDefault();
 
     let message;
@@ -105,7 +104,6 @@ class ImageTile extends Component {
   };
 
   render() {
-
     let buttonClasses = "";
 
     if (this.props.imageAction === "save") {

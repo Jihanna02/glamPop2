@@ -26,51 +26,86 @@ class Gallery extends Component {
   }
 
   updateThisState = message => {
-    this.setState({ showModal: "none" }, function(){
+    this.setState({ showModal: "none" }, function() {
+      this.setState(
+        {
+          showModal: "block",
+          content: message
+        },
+        function() {
+          if (this.props.galleryType === "api") {
+            this.apiToUnsplashForAllImages();
+          } else if (this.props.galleryType === "database") {
+            if (this.props.filter === "all-looks") {
+              // console.log(this.props.filter);
+              this.apiToDatabaseForAllImages();
+            } else {
+              this.apiToDatabaseForCategory();
+            }
+          }
+        }
+      );
     });
-    this.setState({
-      showModal: "block",
-      content: message
-    }, function(){
-    });
-
   };
 
   _closeModal = () => {
-    this.setState({ showModal: "none" }, function() {
-      // console.log("closing modal");
-    });
+    this.setState({ showModal: "none" }, function() {});
   };
 
-  componentDidMount() {
-    if (this.props.galleryType === "api") {
-      const Unsplash = require("unsplash-js").default;
-
-      const unsplash = new Unsplash({
-        applicationId:
-          "89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9",
-        secret:
-          "07f9578de6c18570497cac47d8fb2fc6c6559c8b34163720b059ac3ec7de4d6c"
+  apiToDatabaseForAllImages = () => {
+    axios
+      .get(`/api/looks/user/${this.state.userID}`)
+      .then(res => {
+        const apiObject = res.data;
+        this.setState({ pixObj: [] });
+        this.setState({ pixObj: [...this.state.pixObj, ...apiObject] });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
+  };
 
-      unsplash.collections
-        .getCollectionPhotos(1714447, 1, 30, "latest")
-        .then(toJson)
-        .then(json => {
-          const apiObject = json;
+  apiToUnsplashForAllImages = () => {
+    //use this to load api for all images from unsplash
 
-          this.setState({ pixObj: [...this.state.pixObj, ...apiObject] });
-        });
-    } else if (this.props.galleryType === "database") {
+    const Unsplash = require("unsplash-js").default;
+
+    const unsplash = new Unsplash({
+      applicationId:
+        "89f1ca3f4bd3bef273706bb1866ede73fce3bfe3515a8fcfa96a3d057eea11e9",
+      secret: "07f9578de6c18570497cac47d8fb2fc6c6559c8b34163720b059ac3ec7de4d6c"
+    });
+
+    unsplash.collections
+      .getCollectionPhotos(1714447, 1, 30, "latest")
+      .then(toJson)
+      .then(json => {
+        const apiObject = json;
+
+        this.setState({ pixObj: [...this.state.pixObj, ...apiObject] });
+      });
+  };
+
+  apiToDatabaseForCategory = () => {
+    this.setState({ filter: this.props.filter }, function() {
       axios
-        .get(`/api/looks/user/${this.state.userID}`)
+        .get(`/api/looks/user/${this.state.userID}/${this.state.filter}`)
         .then(res => {
           const apiObject = res.data;
+          this.setState({ pixObj: [] });
           this.setState({ pixObj: [...this.state.pixObj, ...apiObject] });
         })
         .catch(function(error) {
           console.log(error);
         });
+    });
+  };
+
+  componentDidMount() {
+    if (this.props.galleryType === "api") {
+      this.apiToUnsplashForAllImages();
+    } else if (this.props.galleryType === "database") {
+      this.apiToDatabaseForAllImages();
     }
 
     // window.addEventListener('scroll', this.onScroll);
@@ -115,28 +150,9 @@ class Gallery extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.filter !== prevProps.filter) {
       if (this.props.filter === "all-looks") {
-        axios
-          .get(`/api/looks/user/${this.state.userID}`)
-          .then(res => {
-            const apiObject = res.data;
-            this.setState({ pixObj: [...this.state.pixObj, ...apiObject] });
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
+        this.apiToDatabaseForAllImages();
       } else {
-        this.setState({ filter: this.props.filter }, function() {
-          axios
-            .get(`/api/looks/user/${this.state.userID}/${this.state.filter}`)
-            .then(res => {
-              const apiObject = res.data;
-              this.setState({ pixObj: [] });
-              this.setState({ pixObj: [...this.state.pixObj, ...apiObject] });
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-        });
+        this.apiToDatabaseForCategory(this.props.filter);
       }
     }
   }

@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import Flexbox from "flexbox-react";
 
-import Modal from "./modal.js";
+import Modal from "./Modal.js";
 import Register from "./Register.js";
-import FooterBar from "./footerBar.js";
+import FooterBar from "./FooterBar.js";
 
 import "../css/landingPage.css";
 
@@ -77,6 +77,7 @@ class LandingPage extends Component {
   };
 
   render() {
+
     return (
       <section className="container">
         <Flexbox flexDirection="column" className="landing">

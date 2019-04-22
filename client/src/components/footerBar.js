@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class footerBar extends Component {
+class FooterBar extends Component {
   render() {
     return (
       <div className="footerBar">
@@ -10,4 +10,4 @@ class footerBar extends Component {
   }
 }
 
-export default footerBar;
+export default FooterBar;
